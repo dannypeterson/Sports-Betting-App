@@ -18,7 +18,8 @@ This is a sports betting application where users can place bets on the upcoming 
 
 #### Languages:
 
--
+- HTML5
+- CSS3
 
 #### Frameworks and Libraries:
 
