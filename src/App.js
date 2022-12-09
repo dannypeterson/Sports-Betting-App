@@ -29,7 +29,6 @@ function App() {
 
   return (
     <div className="App">
-      <header></header>
       <main>
         <Routes>
           <Route path="/" element={<Register />} />
