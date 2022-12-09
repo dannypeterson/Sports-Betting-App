@@ -21,7 +21,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (formState.password != formState.confirmPassword) {
+    if (formState.password !== formState.confirmPassword) {
       alert('Passwords must match!')
       setFormState(initialState)
       return
