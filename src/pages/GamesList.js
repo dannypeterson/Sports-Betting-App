@@ -6,7 +6,13 @@ import axios from 'axios'
 const GamesList = ({ user }) => {
   const API_KEY = process.env.REACT_APP_ODDS_API_KEY
 
+  // let isBetSlipOpen = false
+
   const [games, setGames] = useState([])
+  const [betSlip, setBetSlip] = useState(false)
+  const [odds, setOdds] = useState(null)
+  const [wager, setWager] = useState(null)
+  const [payout, setPayout] = useState(0)
 
   const getGames = async () => {
     let res = await axios.get(
@@ -55,7 +61,7 @@ const GamesList = ({ user }) => {
 
       gamesArray.push(gameDetails)
     })
-    console.log(gamesArray)
+    // console.log(gamesArray)
     setGames(gamesArray)
   }
 
@@ -63,10 +69,24 @@ const GamesList = ({ user }) => {
     getGames()
   }, [])
 
+  const handleChange = (e) => {
+    setWager(e.target.value)
+    // setPayout()
+    if (odds < 0) {
+      let pay = (100 / odds) * wager * -1
+      setPayout(pay)
+    } else {
+      let pay = (odds / 100) * wager
+      setPayout(pay)
+    }
+  }
+
   const handleBet = (e) => {
-    let betSlip = true
-    let bet = parseInt(e.target.id)
-    console.log(bet)
+    setBetSlip(true)
+    setOdds(parseFloat(e.target.id))
+    if (odds < 0) {
+      console.log('Its a minus odds')
+    } else console.log('positive odds')
   }
 
   return (
@@ -75,6 +95,21 @@ const GamesList = ({ user }) => {
         <p>Pigskin Picks</p>
         <p></p>
       </nav>
+
+      <div className="betslip">
+        {betSlip ? (
+          <div>
+            <h2>Bet Slip:</h2>
+            <input
+              type="text"
+              placeholder="Enter wager here"
+              onChange={handleChange}
+            />
+            <p>Payout: </p>
+          </div>
+        ) : null}
+      </div>
+
       <div className="games-map">
         {games.map((game) => (
           <div key={game.id}>
@@ -95,16 +130,23 @@ const GamesList = ({ user }) => {
             </div>
             <div className="game-totals">
               <h4>Spread</h4>
-              <p>
-                {game.away_spread.points} {game.home_spread.points}
+              <p onClick={handleBet} id={game.away_spread.points}>
+                {game.away_spread.points}
+              </p>
+              <p onClick={handleBet} id={game.home_spread.points}>
+                {game.home_spread.points}
               </p>
             </div>
             {game.over ? (
               <div className="game-totals">
                 <h4>O:</h4>
-                <p>{game.over.points}</p>
+                <p onClick={handleBet} id={game.over.points}>
+                  {game.over.points}
+                </p>
                 <h4>U:</h4>
-                <p>{game.under.points}</p>
+                <p onClick={handleBet} id={game.under.points}>
+                  {game.under.points}
+                </p>
               </div>
             ) : null}
           </div>
