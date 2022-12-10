@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 // import Client from '../services/api'
 import axios from 'axios'
 
-const GamesList = () => {
+const GamesList = ({ user }) => {
   const API_KEY = process.env.REACT_APP_ODDS_API_KEY
 
   const [games, setGames] = useState([])
@@ -63,6 +63,12 @@ const GamesList = () => {
     getGames()
   }, [])
 
+  const handleBet = (e) => {
+    let betSlip = true
+    let bet = parseInt(e.target.id)
+    console.log(bet)
+  }
+
   return (
     <div className="games-container">
       <nav>
@@ -80,8 +86,11 @@ const GamesList = () => {
             </div>
             <div className="game-moneyline">
               <h4>ML</h4>
-              <p>
-                {game.away_ML} {game.home_ML}
+              <p id={game.away_ML} onClick={handleBet}>
+                {game.away_ML}
+              </p>
+              <p id={game.home_ML} onClick={handleBet}>
+                {game.home_ML}
               </p>
             </div>
             <div className="game-totals">

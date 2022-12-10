@@ -33,7 +33,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Register />} />
           <Route path="/home" element={<Home setUser={setUser} />} />
-          <Route path="/games" element={<GamesList />} />
+          <Route path="/games" element={<GamesList user={user} />} />
         </Routes>
       </main>
     </div>
