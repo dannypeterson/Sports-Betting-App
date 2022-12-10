@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Client from '../services/api'
+// import Client from '../services/api'
 import axios from 'axios'
 
 const GamesList = () => {
@@ -12,7 +12,7 @@ const GamesList = () => {
     let res = await axios.get(
       `https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds/?apiKey=${API_KEY}&regions=us&markets=h2h,spreads,totals&oddsFormat=american`
     )
-    console.log(res.data)
+    // console.log(res.data)
     let gamesArray = []
 
     res.data.forEach((game) => {
@@ -22,10 +22,8 @@ const GamesList = () => {
       let spread = game.bookmakers.filter((el) => el.key === 'fanduel')[0]
         .markets[1].outcomes
 
-      // let totals = game.bookmakers.filter((el) => el.key === 'fanduel')[0]
-      //   .markets[2].outcomes
-
-      // console.log(totals)
+      let totals = game.bookmakers.filter((el) => el.key === 'fanduel')[0]
+        .markets[2]?.outcomes
 
       let gameDetails = {
         home_team: h2h[1].name,
@@ -40,17 +38,21 @@ const GamesList = () => {
           points: spread[0].point,
           price: spread[0].price
         },
-        // over: {
-        //   points: totals[0].point,
-        //   price: totals[0].price
-        // },
-        // under: {
-        //   points: totals[1].point,
-        //   price: totals[1].price
-        // },
         date: game.commence_time,
         id: game.id
       }
+
+      if (totals) {
+        gameDetails.over = {
+          points: totals[0].point,
+          price: totals[0].price
+        }
+        gameDetails.under = {
+          points: totals[1].point,
+          price: totals[1].price
+        }
+      }
+
       gamesArray.push(gameDetails)
     })
     console.log(gamesArray)
@@ -72,25 +74,30 @@ const GamesList = () => {
           <div key={game.id}>
             <div className="game-description">
               <p>{game.date}</p>
-              <h3 className="team-names">
-                {game.away_team} at {game.home_team}
-              </h3>
+              <h3 className="team-names">{game.away_team}</h3>
+              <p>at</p>
+              <h3 className="team-names">{game.home_team}</h3>
             </div>
             <div className="game-moneyline">
+              <h4>ML</h4>
               <p>
                 {game.away_ML} {game.home_ML}
               </p>
             </div>
             <div className="game-totals">
+              <h4>Spread</h4>
               <p>
                 {game.away_spread.points} {game.home_spread.points}
               </p>
             </div>
-            {/* <div className="game-spread">
-              <p>
-                O: {game.over.points} U: {game.under.points}
-              </p>
-            </div> */}
+            {game.over ? (
+              <div className="game-totals">
+                <h4>O:</h4>
+                <p>{game.over.points}</p>
+                <h4>U:</h4>
+                <p>{game.under.points}</p>
+              </div>
+            ) : null}
           </div>
         ))}
       </div>
