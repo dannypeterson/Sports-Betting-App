@@ -73,10 +73,10 @@ const GamesList = ({ user }) => {
     setWager(e.target.value)
     // setPayout()
     if (odds < 0) {
-      let pay = (100 / odds) * wager * -1
+      let pay = Math.round((100 / odds) * wager * -1)
       setPayout(pay)
     } else {
-      let pay = (odds / 100) * wager
+      let pay = Math.round((odds / 100) * wager)
       setPayout(pay)
     }
   }
@@ -84,9 +84,6 @@ const GamesList = ({ user }) => {
   const handleBet = (e) => {
     setBetSlip(true)
     setOdds(parseFloat(e.target.id))
-    if (odds < 0) {
-      console.log('Its a minus odds')
-    } else console.log('positive odds')
   }
 
   return (
@@ -100,12 +97,13 @@ const GamesList = ({ user }) => {
         {betSlip ? (
           <div>
             <h2>Bet Slip:</h2>
+            <p>{odds}</p>
             <input
               type="text"
               placeholder="Enter wager here"
               onChange={handleChange}
             />
-            <p>Payout: </p>
+            <p>Payout: ${payout}</p>
           </div>
         ) : null}
       </div>
@@ -130,22 +128,26 @@ const GamesList = ({ user }) => {
             </div>
             <div className="game-totals">
               <h4>Spread</h4>
-              <p onClick={handleBet} id={game.away_spread.points}>
+              <p onClick={handleBet} id={game.away_spread.price}>
                 {game.away_spread.points}
+                {game.away_spread.price}
               </p>
-              <p onClick={handleBet} id={game.home_spread.points}>
+              <p onClick={handleBet} id={game.home_spread.price}>
                 {game.home_spread.points}
+                {game.home_spread.price}
               </p>
             </div>
             {game.over ? (
               <div className="game-totals">
                 <h4>O:</h4>
-                <p onClick={handleBet} id={game.over.points}>
+                <p onClick={handleBet} id={game.over.price}>
                   {game.over.points}
+                  {game.over.price}
                 </p>
                 <h4>U:</h4>
-                <p onClick={handleBet} id={game.under.points}>
+                <p onClick={handleBet} id={game.under.price}>
                   {game.under.points}
+                  {game.under.price}
                 </p>
               </div>
             ) : null}
