@@ -84,3 +84,15 @@ code {
 .away-spread:hover, .home-spread:hover, .game-moneyline:hover, .game-totals:hover {
 background-color: rgb(223, 238, 253);
 }
+
+.away-spread:focus, .home-spread:focus, .game-moneyline:focus, .game-totals:focus {
+  background-color: rgb(223, 238, 253);
+}
+
+
+.betslip {
+  position: fixed;
+  bottom: 0;
+  background-color: #eff4fd;
+  width: 100%;
+}

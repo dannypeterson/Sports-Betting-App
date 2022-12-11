@@ -100,21 +100,6 @@ const GamesList = ({ user }) => {
         <p>Total</p>
       </div>
 
-      <div className="betslip">
-        {betSlip ? (
-          <div>
-            <h2>Bet Slip:</h2>
-            <p>{odds}</p>
-            <input
-              type="text"
-              placeholder="Enter wager here"
-              onChange={handleChange}
-            />
-            <p>Payout: ${payout}</p>
-          </div>
-        ) : null}
-      </div>
-
       <div className="game-map-container">
         {games.map((game) => (
           <div className="game-map" key={game.id}>
@@ -125,6 +110,7 @@ const GamesList = ({ user }) => {
             <div className="game-spread">
               <div
                 className="away-spread"
+                tabIndex={1}
                 onClick={handleBet}
                 id={game.away_spread.price}
               >
@@ -135,6 +121,7 @@ const GamesList = ({ user }) => {
 
             <div
               className="game-moneyline"
+              tabIndex={2}
               id={game.away_ML}
               onClick={handleBet}
             >
@@ -144,6 +131,7 @@ const GamesList = ({ user }) => {
             {game.over ? (
               <div
                 className="game-totals"
+                tabIndex={3}
                 onClick={handleBet}
                 id={game.over.price}
               >
@@ -160,6 +148,7 @@ const GamesList = ({ user }) => {
             <div className="game-spread">
               <div
                 className="home-spread"
+                tabIndex={4}
                 onClick={handleBet}
                 id={game.home_spread.price}
               >
@@ -172,6 +161,7 @@ const GamesList = ({ user }) => {
               className="game-moneyline"
               id={game.home_ML}
               onClick={handleBet}
+              tabIndex="5"
             >
               <p>{game.home_ML}</p>
             </div>
@@ -181,6 +171,7 @@ const GamesList = ({ user }) => {
                 className="game-totals"
                 onClick={handleBet}
                 id={game.under.price}
+                tabIndex="6"
               >
                 <p>U {game.under.points}</p>
                 <p className="game-totals-price">{game.under.price}</p>
@@ -188,6 +179,21 @@ const GamesList = ({ user }) => {
             ) : null}
           </div>
         ))}
+      </div>
+
+      <div className="betslip">
+        {betSlip ? (
+          <div>
+            <h2>Bet Slip:</h2>
+            <p>{odds}</p>
+            <input
+              type="text"
+              placeholder="Enter wager here"
+              onChange={handleChange}
+            />
+            <p>Payout: ${payout}</p>
+          </div>
+        ) : null}
       </div>
     </div>
   )
