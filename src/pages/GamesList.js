@@ -87,11 +87,18 @@ const GamesList = ({ user }) => {
   }
 
   return (
-    <div className="games-container">
+    <div className="game-container">
       <nav>
         <p>Pigskin Picks</p>
         <p></p>
       </nav>
+
+      <div className="game-columns">
+        <h4>NFL</h4>
+        <p>Spread</p>
+        <p>Moneyline</p>
+        <p>Total</p>
+      </div>
 
       <div className="betslip">
         {betSlip ? (
@@ -108,47 +115,65 @@ const GamesList = ({ user }) => {
         ) : null}
       </div>
 
-      <div className="games-map">
+      <div className="game-map-container">
         {games.map((game) => (
-          <div key={game.id}>
+          <div className="game-map" key={game.id}>
             <div className="game-description">
-              <p>{game.date}</p>
               <h3 className="team-names">{game.away_team}</h3>
-              <p>at</p>
-              <h3 className="team-names">{game.home_team}</h3>
             </div>
+
+            <div className="game-spread">
+              <div
+                className="away-spread"
+                onClick={handleBet}
+                id={game.away_spread.price}
+              >
+                <p>{game.away_spread.points}</p>
+                <p className="game-spread-price">{game.away_spread.price}</p>
+              </div>
+            </div>
+
             <div className="game-moneyline">
-              <h4>ML</h4>
               <p id={game.away_ML} onClick={handleBet}>
                 {game.away_ML}
               </p>
+            </div>
+
+            {game.over ? (
+              <div className="game-totals">
+                <p onClick={handleBet} id={game.over.price}>
+                  {game.over.points}
+                </p>
+                <p className="game-totals-price">{game.over.price}</p>
+              </div>
+            ) : null}
+
+            <div className="game-description home">
+              <h3 className="team-names">@ {game.home_team}</h3>
+              <p>{game.date}</p>
+            </div>
+
+            <div className="game-spread">
+              <div className="home-spread">
+                <p onClick={handleBet} id={game.home_spread.price}>
+                  {game.home_spread.points}
+                </p>
+                <p className="game-spread-price">{game.home_spread.price}</p>
+              </div>
+            </div>
+
+            <div className="game-moneyline">
               <p id={game.home_ML} onClick={handleBet}>
                 {game.home_ML}
               </p>
             </div>
-            <div className="game-totals">
-              <h4>Spread</h4>
-              <p onClick={handleBet} id={game.away_spread.price}>
-                {game.away_spread.points}
-                {game.away_spread.price}
-              </p>
-              <p onClick={handleBet} id={game.home_spread.price}>
-                {game.home_spread.points}
-                {game.home_spread.price}
-              </p>
-            </div>
-            {game.over ? (
+
+            {game.under ? (
               <div className="game-totals">
-                <h4>O:</h4>
-                <p onClick={handleBet} id={game.over.price}>
-                  {game.over.points}
-                  {game.over.price}
-                </p>
-                <h4>U:</h4>
                 <p onClick={handleBet} id={game.under.price}>
                   {game.under.points}
-                  {game.under.price}
                 </p>
+                <p className="game-totals-price">{game.under.price}</p>
               </div>
             ) : null}
           </div>

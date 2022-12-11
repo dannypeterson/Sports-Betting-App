@@ -12,3 +12,38 @@ code {
     monospace;
 }
 
+.game-columns {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  border: 1px solid lightgray;
+  justify-self: center;
+}
+
+
+.game-map {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  border: 1px solid lightgray;
+}
+
+.game-description {
+  /* border: 1px solid red; */
+  width: fit-content;
+}
+
+.game-spread-price, .game-moneyline, .game-totals-price {
+  color: blue;
+}
+
+
+.away-spread, .home-spread, .game-moneyline, .game-totals {
+  border: 1px solid rgb(144, 197, 251);
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100px;
+
+}
+
+.away-spread:hover, .home-spread:hover, .game-moneyline:hover, .game-totals:hover {
+background-color: rgb(223, 238, 253);
+}
