@@ -142,7 +142,7 @@ const GamesList = ({ user }) => {
             {game.over ? (
               <div className="game-totals">
                 <p onClick={handleBet} id={game.over.price}>
-                  {game.over.points}
+                  O {game.over.points}
                 </p>
                 <p className="game-totals-price">{game.over.price}</p>
               </div>
@@ -171,7 +171,7 @@ const GamesList = ({ user }) => {
             {game.under ? (
               <div className="game-totals">
                 <p onClick={handleBet} id={game.under.price}>
-                  {game.under.points}
+                  U {game.under.points}
                 </p>
                 <p className="game-totals-price">{game.under.price}</p>
               </div>
