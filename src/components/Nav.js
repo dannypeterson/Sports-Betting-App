@@ -5,7 +5,11 @@ const Nav = ({ user }) => {
 
   return (
     <header className="nav">
-      <img src="alt" alt="logo" className="logo"></img>
+      <img
+        src="'../../assets/images/logo.png"
+        alt="logo"
+        className="logo"
+      ></img>
       <nav>
         <ul className="nav_links">
           <li onClick={() => navigate('/profile')}>{user.username}</li>
