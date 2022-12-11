@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 // import Client from '../services/api'
 import axios from 'axios'
+import Nav from '../components/Nav'
 
 const GamesList = ({ user }) => {
   const API_KEY = process.env.REACT_APP_ODDS_API_KEY
@@ -83,15 +84,14 @@ const GamesList = ({ user }) => {
 
   const handleBet = (e) => {
     setBetSlip(true)
-    setOdds(parseFloat(e.target.id))
+    console.log(e.target.id)
+    setOdds(e.target.id)
+    // setOdds(parseFloat(e.target.id))
   }
 
   return (
     <div className="game-container">
-      <nav>
-        <p>Pigskin Picks</p>
-        <p></p>
-      </nav>
+      <Nav user={user} />
 
       <div className="game-columns">
         <h4>NFL</h4>
@@ -133,17 +133,21 @@ const GamesList = ({ user }) => {
               </div>
             </div>
 
-            <div className="game-moneyline">
-              <p id={game.away_ML} onClick={handleBet}>
-                {game.away_ML}
-              </p>
+            <div
+              className="game-moneyline"
+              id={game.away_ML}
+              onClick={handleBet}
+            >
+              <p>{game.away_ML}</p>
             </div>
 
             {game.over ? (
-              <div className="game-totals">
-                <p onClick={handleBet} id={game.over.price}>
-                  O {game.over.points}
-                </p>
+              <div
+                className="game-totals"
+                onClick={handleBet}
+                id={game.over.price}
+              >
+                <p>O {game.over.points}</p>
                 <p className="game-totals-price">{game.over.price}</p>
               </div>
             ) : null}
@@ -154,25 +158,31 @@ const GamesList = ({ user }) => {
             </div>
 
             <div className="game-spread">
-              <div className="home-spread">
-                <p onClick={handleBet} id={game.home_spread.price}>
-                  {game.home_spread.points}
-                </p>
+              <div
+                className="home-spread"
+                onClick={handleBet}
+                id={game.home_spread.price}
+              >
+                <p>{game.home_spread.points}</p>
                 <p className="game-spread-price">{game.home_spread.price}</p>
               </div>
             </div>
 
-            <div className="game-moneyline">
-              <p id={game.home_ML} onClick={handleBet}>
-                {game.home_ML}
-              </p>
+            <div
+              className="game-moneyline"
+              id={game.home_ML}
+              onClick={handleBet}
+            >
+              <p>{game.home_ML}</p>
             </div>
 
             {game.under ? (
-              <div className="game-totals">
-                <p onClick={handleBet} id={game.under.price}>
-                  U {game.under.points}
-                </p>
+              <div
+                className="game-totals"
+                onClick={handleBet}
+                id={game.under.price}
+              >
+                <p>U {game.under.points}</p>
                 <p className="game-totals-price">{game.under.price}</p>
               </div>
             ) : null}

@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Register from './pages/Register'
 import GamesList from './pages/GamesList'
 import { CheckSession } from './services/Auth'
+import Nav from './components/Nav'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -34,6 +35,7 @@ function App() {
           <Route path="/" element={<Register />} />
           <Route path="/home" element={<Home setUser={setUser} />} />
           <Route path="/games" element={<GamesList user={user} />} />
+          {/* <Route path="/navbar" element={<Nav user={user} />} /> */}
         </Routes>
       </main>
     </div>
