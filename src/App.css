@@ -95,4 +95,8 @@ background-color: rgb(223, 238, 253);
   bottom: 0%;
   background-color: #eff4fd;
   width: 100%;
+  border-top: 2px solid lightgray;
+  border-left: 2px solid lightgray;
+  border-right: 2px solid lightgray;
+  border-radius: 10px;
 }

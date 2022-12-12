@@ -3,11 +3,10 @@ import { useNavigate } from 'react-router-dom'
 // import Client from '../services/api'
 import axios from 'axios'
 import Nav from '../components/Nav'
+import Game from '../components/Game'
 
 const GamesList = ({ user }) => {
   const API_KEY = process.env.REACT_APP_ODDS_API_KEY
-
-  // let isBetSlipOpen = false
 
   const [games, setGames] = useState([])
   const [betSlip, setBetSlip] = useState(false)
@@ -38,7 +37,7 @@ const GamesList = ({ user }) => {
       const dateString = date.toLocaleString('en-US', {
         month: 'long',
         day: 'numeric',
-        year: 'numeric',
+        // year: 'numeric',
         hour: 'numeric',
         minute: 'numeric',
         timeZone: 'EST'
@@ -84,7 +83,7 @@ const GamesList = ({ user }) => {
 
   const handleChange = (e) => {
     setWager(e.target.value)
-    // setPayout()
+
     if (odds < 0) {
       let pay = Math.round((100 / odds) * wager * -1)
       setPayout(pay)
@@ -94,8 +93,9 @@ const GamesList = ({ user }) => {
     }
   }
 
-  // try async
-  const handleBet = (e) => {
+  // try async to fix delay?
+  const handleBet = (e, info) => {
+    console.log(info)
     setBetSlip(true)
     console.log(e.target.id)
     setOdds(e.target.id)
@@ -112,99 +112,21 @@ const GamesList = ({ user }) => {
         <p>Moneyline</p>
         <p>Total</p>
       </div>
-
-      <div className="game-map-container">
-        {games.map((game) => (
-          <div className="game-map" key={game.id}>
-            <div className="game-description">
-              <h3 className="team-names">{game.away_team}</h3>
-            </div>
-
-            <div className="game-spread">
-              <div
-                className="away-spread"
-                tabIndex={1}
-                onClick={handleBet}
-                id={game.away_spread.price}
-              >
-                <p>{game.away_spread.points}</p>
-                <p className="game-spread-price">{game.away_spread.price}</p>
-              </div>
-            </div>
-
-            <div
-              className="game-moneyline"
-              tabIndex={2}
-              id={game.away_ML}
-              onClick={handleBet}
-            >
-              <p>{game.away_ML}</p>
-            </div>
-
-            {game.over ? (
-              <div
-                className="game-totals"
-                tabIndex={3}
-                onClick={handleBet}
-                id={game.over.price}
-              >
-                <p>O {game.over.points}</p>
-                <p className="game-totals-price">{game.over.price}</p>
-              </div>
-            ) : null}
-
-            <div className="game-description home">
-              <h3 className="team-names">@ {game.home_team}</h3>
-              <p>{game.date}</p>
-            </div>
-
-            <div className="game-spread">
-              <div
-                className="home-spread"
-                tabIndex={4}
-                onClick={handleBet}
-                id={game.home_spread.price}
-              >
-                <p>{game.home_spread.points}</p>
-                <p className="game-spread-price">{game.home_spread.price}</p>
-              </div>
-            </div>
-
-            <div
-              className="game-moneyline"
-              id={game.home_ML}
-              onClick={handleBet}
-              tabIndex="5"
-            >
-              <p>{game.home_ML}</p>
-            </div>
-
-            {game.under ? (
-              <div
-                className="game-totals"
-                onClick={handleBet}
-                id={game.under.price}
-                tabIndex="6"
-              >
-                <p>U {game.under.points}</p>
-                <p className="game-totals-price">{game.under.price}</p>
-              </div>
-            ) : null}
-          </div>
-        ))}
-      </div>
-
+      <Game games={games} handleBet={handleBet} />
       <div className="betslip">
         {betSlip ? (
           <div>
-            <h2>Bet Slip:</h2>
+            <h2>Bet Slip: </h2>
             <p>{odds}</p>
-            <input
-              type="text"
-              placeholder="Enter wager here"
-              onChange={handleChange}
-            />
-            <p>Payout: ${payout}</p>
+            <form>
+              <input
+                type="text"
+                placeholder="Enter wager here"
+                onChange={handleChange}
+              />
+              <button className="submit-bet-button">Place bet</button>
+            </form>
+            <p>To win: ${payout}</p>
           </div>
         ) : null}
       </div>
