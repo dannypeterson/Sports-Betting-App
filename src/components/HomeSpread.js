@@ -4,9 +4,11 @@ const HomeSpread = ({
   predictedTeam,
   setPredictedTeam,
   points,
-  setPoints
+  setPoints,
+  setGameId
 }) => {
   const handleSpread = (e) => {
+    setGameId(game.id)
     setPredictedTeam(game.home_team)
     setPoints(game.home_spread.points)
     handleBet(e, game, 'spread', predictedTeam, points)

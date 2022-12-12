@@ -4,9 +4,11 @@ const AwayMoneyline = ({
   game,
   handleBet,
   setPredictedTeam,
-  predictedTeam
+  predictedTeam,
+  setGameId
 }) => {
   const handleMoneyline = (e) => {
+    setGameId(game.id)
     setPredictedTeam(game.away_team)
     handleBet(e, game, 'moneyline', predictedTeam)
   }

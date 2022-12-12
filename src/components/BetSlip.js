@@ -10,7 +10,8 @@ const BetSlip = ({
   predictedTeam,
   betType,
   points,
-  user
+  user,
+  gameId
 }) => {
   let navigate = useNavigate()
 
@@ -44,7 +45,7 @@ const BetSlip = ({
 
   let betSlip = {
     user_id: user.id,
-    game_id: betDetails.id,
+    game_id: gameId,
     type: betType,
     team: predictedTeam,
     odds: odds,

@@ -4,9 +4,11 @@ const Over = ({
   setPredictedTeam,
   predictedTeam,
   points,
-  setPoints
+  setPoints,
+  setGameId
 }) => {
   const handleOver = (e) => {
+    setGameId(game.id)
     setPredictedTeam('Over')
     setPoints(game.over.points)
     handleBet(e, game, 'total match points', predictedTeam, points)

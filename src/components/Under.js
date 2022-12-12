@@ -4,9 +4,11 @@ const Under = ({
   predictedTeam,
   setPredictedTeam,
   points,
-  setPoints
+  setPoints,
+  setGameId
 }) => {
   const handleUnder = (e) => {
+    setGameId(game.id)
     setPredictedTeam('Under')
     setPoints(game.under.points)
     handleBet(e, game, 'total match points', predictedTeam, points)

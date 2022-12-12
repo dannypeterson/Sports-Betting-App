@@ -13,6 +13,7 @@ const GamesList = ({ user }) => {
   const [odds, setOdds] = useState(null)
   const [betSlipOpen, setBetSlipOpen] = useState(false)
   const [betDetails, setBetDetails] = useState(null)
+  const [gameId, setGameId] = useState(null)
 
   const [predictedTeam, setPredictedTeam] = useState(null)
   const [betType, setBetType] = useState(null)
@@ -110,6 +111,7 @@ const GamesList = ({ user }) => {
         setPredictedTeam={setPredictedTeam}
         points={points}
         setPoints={setPoints}
+        setGameId={setGameId}
       />
       <BetSlip
         betSlipOpen={betSlipOpen}
@@ -119,6 +121,7 @@ const GamesList = ({ user }) => {
         betType={betType}
         points={points}
         user={user}
+        gameId={gameId}
       />
     </div>
   )

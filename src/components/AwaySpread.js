@@ -6,9 +6,11 @@ const AwaySpread = ({
   predictedTeam,
   setPredictedTeam,
   points,
-  setPoints
+  setPoints,
+  setGameId
 }) => {
   const handleSpread = (e) => {
+    setGameId(game.id)
     setPredictedTeam(game.away_team)
     setPoints(game.away_spread.points)
     handleBet(e, game, 'spread', predictedTeam, points)

@@ -15,7 +15,8 @@ const Game = ({
   setPredictedTeam,
   setBetType,
   points,
-  setPoints
+  setPoints,
+  setGameId
 }) => {
   return (
     <div className="game-map-container">
@@ -30,12 +31,14 @@ const Game = ({
               setPredictedTeam={setPredictedTeam}
               points={points}
               setPoints={setPoints}
+              setGameId={setGameId}
             />
             <AwayMoneyline
               game={game}
               handleBet={handleBet}
               predictedTeam={predictedTeam}
               setPredictedTeam={setPredictedTeam}
+              setGameId={setGameId}
             />
             {game.over ? (
               <Over
@@ -45,6 +48,7 @@ const Game = ({
                 setPredictedTeam={setPredictedTeam}
                 points={points}
                 setPoints={setPoints}
+                setGameId={setGameId}
               />
             ) : null}
           </div>
@@ -61,12 +65,14 @@ const Game = ({
               setPredictedTeam={setPredictedTeam}
               points={points}
               setPoints={setPoints}
+              setGameId={setGameId}
             />
             <HomeMoneyline
               game={game}
               handleBet={handleBet}
               setPredictedTeam={setPredictedTeam}
               predictedTeam={predictedTeam}
+              setGameId={setGameId}
             />
             {game.under ? (
               <Under
@@ -76,6 +82,7 @@ const Game = ({
                 setPredictedTeam={setPredictedTeam}
                 points={points}
                 setPoints={setPoints}
+                setGameId={setGameId}
               />
             ) : null}
           </div>
