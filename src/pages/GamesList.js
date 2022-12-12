@@ -14,6 +14,7 @@ const GamesList = ({ user }) => {
   const [odds, setOdds] = useState(null)
   const [wager, setWager] = useState(null)
   const [payout, setPayout] = useState(0)
+  const [newDate, setNewDate] = useState(null)
 
   const getGames = async () => {
     let res = await axios.get(
@@ -32,6 +33,17 @@ const GamesList = ({ user }) => {
       let totals = game.bookmakers.filter((el) => el.key === 'fanduel')[0]
         .markets[2]?.outcomes
 
+      let date = new Date(game.commence_time)
+
+      const dateString = date.toLocaleString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        timeZone: 'EST'
+      })
+
       let gameDetails = {
         home_team: h2h[1].name,
         home_ML: h2h[1].price,
@@ -45,7 +57,7 @@ const GamesList = ({ user }) => {
           points: spread[0].point,
           price: spread[0].price
         },
-        date: game.commence_time,
+        date: dateString,
         id: game.id
       }
 
@@ -82,6 +94,7 @@ const GamesList = ({ user }) => {
     }
   }
 
+  // try async
   const handleBet = (e) => {
     setBetSlip(true)
     console.log(e.target.id)
