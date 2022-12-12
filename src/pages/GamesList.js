@@ -86,6 +86,7 @@ const GamesList = ({ user }) => {
 
   const handleBet = (e, info, type, team, spread) => {
     setBetSlipOpen(true)
+    console.log(info)
     setBetDetails(info)
     setBetType(type)
     setOdds(e.target.id)
@@ -117,6 +118,7 @@ const GamesList = ({ user }) => {
         predictedTeam={predictedTeam}
         betType={betType}
         points={points}
+        user={user}
       />
     </div>
   )

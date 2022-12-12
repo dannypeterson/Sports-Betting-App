@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Client from '../services/api'
 
 const BetSlip = ({
   betSlipOpen,
@@ -6,8 +8,11 @@ const BetSlip = ({
   betDetails,
   predictedTeam,
   betType,
-  points
+  points,
+  user
 }) => {
+  let navigate = useNavigate()
+
   const [wager, setWager] = useState(null)
   const [payout, setPayout] = useState(0)
 
@@ -22,6 +27,15 @@ const BetSlip = ({
       setPayout(pay)
     }
   }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    let res = await Client.post(`/games`, betDetails)
+    user.balance = user.balance - wager
+    console.log('Bet has been placed')
+    console.log(user.balance)
+  }
+
   return (
     <div className="betslip">
       {betSlipOpen ? (
@@ -65,7 +79,9 @@ const BetSlip = ({
                 </div>
               </div>
             </div>
-            <button className="submit-bet-button">Place bet</button>
+            <button className="submit-bet-button" onClick={handleSubmit}>
+              Place bet
+            </button>
           </form>
         </div>
       ) : null}
