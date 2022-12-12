@@ -13,7 +13,9 @@ const Game = ({
   handleBet,
   predictedTeam,
   setPredictedTeam,
-  setBetType
+  setBetType,
+  points,
+  setPoints
 }) => {
   return (
     <div className="game-map-container">
@@ -21,14 +23,30 @@ const Game = ({
         <div className="game-map" key={game.id}>
           <div className="away-team">
             <h3>{game.away_team}</h3>
-            <AwaySpread game={game} handleBet={handleBet} />
+            <AwaySpread
+              game={game}
+              handleBet={handleBet}
+              predictedTeam={predictedTeam}
+              setPredictedTeam={setPredictedTeam}
+              points={points}
+              setPoints={setPoints}
+            />
             <AwayMoneyline
               game={game}
               handleBet={handleBet}
               predictedTeam={predictedTeam}
               setPredictedTeam={setPredictedTeam}
             />
-            {game.over ? <Over game={game} handleBet={handleBet} /> : null}
+            {game.over ? (
+              <Over
+                game={game}
+                handleBet={handleBet}
+                predictedTeam={predictedTeam}
+                setPredictedTeam={setPredictedTeam}
+                points={points}
+                setPoints={setPoints}
+              />
+            ) : null}
           </div>
 
           <div className="home-team">
@@ -36,15 +54,30 @@ const Game = ({
               <h3>@ {game.home_team}</h3>
               <p>{game.date}</p>
             </section>
-            <HomeSpread game={game} handleBet={handleBet} />
+            <HomeSpread
+              game={game}
+              handleBet={handleBet}
+              predictedTeam={predictedTeam}
+              setPredictedTeam={setPredictedTeam}
+              points={points}
+              setPoints={setPoints}
+            />
             <HomeMoneyline
               game={game}
               handleBet={handleBet}
               setPredictedTeam={setPredictedTeam}
               predictedTeam={predictedTeam}
-              setBetType={setBetType}
             />
-            {game.under ? <Under game={game} handleBet={handleBet} /> : null}
+            {game.under ? (
+              <Under
+                game={game}
+                handleBet={handleBet}
+                predictedTeam={predictedTeam}
+                setPredictedTeam={setPredictedTeam}
+                points={points}
+                setPoints={setPoints}
+              />
+            ) : null}
           </div>
         </div>
       ))}

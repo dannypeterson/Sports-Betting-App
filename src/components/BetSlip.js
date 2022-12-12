@@ -4,8 +4,9 @@ const BetSlip = ({
   betSlipOpen,
   odds,
   betDetails,
-  predictedWinner,
-  betType
+  predictedTeam,
+  betType,
+  points
 }) => {
   const [wager, setWager] = useState(null)
   const [payout, setPayout] = useState(0)
@@ -27,8 +28,12 @@ const BetSlip = ({
         <div>
           <h2>Bet Slip: </h2>
           <div className="bet-header">
-            <h3>{predictedWinner}</h3>
-            <p>{betType.toUpperCase()}</p>
+            <div>
+              <h3>
+                {predictedTeam} {points}
+              </h3>
+              <p>{betType.toUpperCase()}</p>
+            </div>
             <div>
               <p>{odds}</p>
             </div>

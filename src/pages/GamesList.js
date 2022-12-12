@@ -16,6 +16,7 @@ const GamesList = ({ user }) => {
 
   const [predictedTeam, setPredictedTeam] = useState(null)
   const [betType, setBetType] = useState(null)
+  const [points, setPoints] = useState(null)
 
   const getGames = async () => {
     let res = await axios.get(
@@ -83,12 +84,13 @@ const GamesList = ({ user }) => {
     getGames()
   }, [])
 
-  // try async to fix delay?
-  const handleBet = (e, info, type, team) => {
+  const handleBet = (e, info, type, team, spread) => {
     setBetSlipOpen(true)
-    setBetType(type)
-    console.log(team)
     setBetDetails(info)
+    setBetType(type)
+    // console.log(team)
+    console.log(spread)
+    // setPoints(pointSpread)
     setOdds(e.target.id)
     // setOdds(parseFloat(e.target.id))
   }
@@ -108,6 +110,8 @@ const GamesList = ({ user }) => {
         handleBet={handleBet}
         predictedTeam={predictedTeam}
         setPredictedTeam={setPredictedTeam}
+        points={points}
+        setPoints={setPoints}
       />
       <BetSlip
         betSlipOpen={betSlipOpen}
@@ -115,6 +119,7 @@ const GamesList = ({ user }) => {
         betDetails={betDetails}
         predictedTeam={predictedTeam}
         betType={betType}
+        points={points}
       />
     </div>
   )
