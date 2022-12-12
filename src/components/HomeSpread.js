@@ -4,7 +4,7 @@ const HomeSpread = ({ game, handleBet }) => {
       <div
         className="home-spread"
         tabIndex={4}
-        onClick={handleBet}
+        onClick={(e) => handleBet(e, game)}
         id={game.home_spread.price}
       >
         <p>{game.home_spread.points}</p>

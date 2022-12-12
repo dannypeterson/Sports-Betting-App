@@ -2,7 +2,7 @@ const Under = ({ game, handleBet }) => {
   return (
     <div
       className="game-totals"
-      onClick={handleBet}
+      onClick={(e) => handleBet(e, game)}
       id={game.under.price}
       tabIndex="6"
     >

@@ -14,7 +14,7 @@ const HomeMoneyline = ({ game, handleBet }) => {
       <div
         className="game-moneyline"
         id={game.home_ML}
-        onClick={handleBet}
+        onClick={(e) => handleBet(e, game)}
         tabIndex="5"
       >
         <p>{game.home_ML}</p>
