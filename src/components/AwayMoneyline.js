@@ -1,12 +1,14 @@
 import { useState } from 'react'
 
-const AwayMoneyline = ({ game, handleBet }) => {
-  const [predictedWinner, setPredictedWinner] = useState(null)
-  const [betType, setBetType] = useState(null)
-
-  const handleMoneyline = (e, info) => {
-    console.log(e.target.id)
-    console.log(info)
+const AwayMoneyline = ({
+  game,
+  handleBet,
+  setPredictedTeam,
+  predictedTeam
+}) => {
+  const handleMoneyline = (e) => {
+    setPredictedTeam(game.away_team)
+    handleBet(e, game, 'moneyline', predictedTeam)
   }
 
   return (
@@ -15,18 +17,11 @@ const AwayMoneyline = ({ game, handleBet }) => {
         className="game-moneyline"
         tabIndex={2}
         id={game.away_ML}
-        onClick={(e) => handleMoneyline(e, game)}
+        onClick={(e) => handleMoneyline(e)}
+        // onClick={(e) => handleBet(e, game, 'moneyline', 'arizone')}
       >
         <p>{game.away_ML}</p>
       </div>
-      {/* <div
-        className="game-moneyline"
-        id={game.home_ML}
-        onClick={handleBet}
-        tabIndex="5"
-      >
-        <p>{game.home_ML}</p>
-      </div> */}
     </div>
   )
 }

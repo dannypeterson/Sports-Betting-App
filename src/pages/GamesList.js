@@ -14,6 +14,9 @@ const GamesList = ({ user }) => {
   const [betSlipOpen, setBetSlipOpen] = useState(false)
   const [betDetails, setBetDetails] = useState(null)
 
+  const [predictedTeam, setPredictedTeam] = useState(null)
+  const [betType, setBetType] = useState(null)
+
   const getGames = async () => {
     let res = await axios.get(
       `https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds/?apiKey=${API_KEY}&regions=us&markets=h2h,spreads,totals&oddsFormat=american`
@@ -81,11 +84,11 @@ const GamesList = ({ user }) => {
   }, [])
 
   // try async to fix delay?
-  const handleBet = (e, info) => {
+  const handleBet = (e, info, type, team) => {
     setBetSlipOpen(true)
-    console.log(info)
+    setBetType(type)
+    console.log(team)
     setBetDetails(info)
-    console.log(e.target.id)
     setOdds(e.target.id)
     // setOdds(parseFloat(e.target.id))
   }
@@ -100,8 +103,19 @@ const GamesList = ({ user }) => {
         <p>Moneyline</p>
         <p>Total</p>
       </div>
-      <Game games={games} handleBet={handleBet} />
-      <BetSlip betSlipOpen={betSlipOpen} odds={odds} betDetails={betDetails} />
+      <Game
+        games={games}
+        handleBet={handleBet}
+        predictedTeam={predictedTeam}
+        setPredictedTeam={setPredictedTeam}
+      />
+      <BetSlip
+        betSlipOpen={betSlipOpen}
+        odds={odds}
+        betDetails={betDetails}
+        predictedTeam={predictedTeam}
+        betType={betType}
+      />
     </div>
   )
 }

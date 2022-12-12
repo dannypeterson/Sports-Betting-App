@@ -104,3 +104,9 @@ background-color: rgb(223, 238, 253);
   border-right: 2px solid lightgray;
   border-radius: 10px;
 }
+
+.bet-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

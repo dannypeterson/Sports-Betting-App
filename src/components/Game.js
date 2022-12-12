@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import AwayMoneyline from './AwayMoneyline'
 import AwaySpread from './AwaySpread'
 import Over from './Over'
@@ -6,7 +8,13 @@ import HomeMoneyline from './HomeMoneyline'
 import HomeSpread from './HomeSpread'
 import Under from './Under'
 
-const Game = ({ games, handleBet }) => {
+const Game = ({
+  games,
+  handleBet,
+  predictedTeam,
+  setPredictedTeam,
+  setBetType
+}) => {
   return (
     <div className="game-map-container">
       {games.map((game) => (
@@ -14,7 +22,12 @@ const Game = ({ games, handleBet }) => {
           <div className="away-team">
             <h3>{game.away_team}</h3>
             <AwaySpread game={game} handleBet={handleBet} />
-            <AwayMoneyline game={game} handleBet={handleBet} />
+            <AwayMoneyline
+              game={game}
+              handleBet={handleBet}
+              predictedTeam={predictedTeam}
+              setPredictedTeam={setPredictedTeam}
+            />
             {game.over ? <Over game={game} handleBet={handleBet} /> : null}
           </div>
 
@@ -24,7 +37,13 @@ const Game = ({ games, handleBet }) => {
               <p>{game.date}</p>
             </section>
             <HomeSpread game={game} handleBet={handleBet} />
-            <HomeMoneyline game={game} handleBet={handleBet} />
+            <HomeMoneyline
+              game={game}
+              handleBet={handleBet}
+              setPredictedTeam={setPredictedTeam}
+              predictedTeam={predictedTeam}
+              setBetType={setBetType}
+            />
             {game.under ? <Under game={game} handleBet={handleBet} /> : null}
           </div>
         </div>

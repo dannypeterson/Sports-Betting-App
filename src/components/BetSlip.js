@@ -1,6 +1,12 @@
 import { useState } from 'react'
 
-const BetSlip = ({ betSlipOpen, odds, betDetails }) => {
+const BetSlip = ({
+  betSlipOpen,
+  odds,
+  betDetails,
+  predictedWinner,
+  betType
+}) => {
   const [wager, setWager] = useState(null)
   const [payout, setPayout] = useState(0)
 
@@ -20,12 +26,16 @@ const BetSlip = ({ betSlipOpen, odds, betDetails }) => {
       {betSlipOpen ? (
         <div>
           <h2>Bet Slip: </h2>
-          {/* <h3>{predictedWinner}</h3>
-          <p>{betType}</p> */}
+          <div className="bet-header">
+            <h3>{predictedWinner}</h3>
+            <p>{betType.toUpperCase()}</p>
+            <div>
+              <p>{odds}</p>
+            </div>
+          </div>
           <p>
             {betDetails.away_team} @ {betDetails.home_team}
           </p>
-          <p>{odds}</p>
           <form>
             <input
               type="text"
