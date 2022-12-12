@@ -45,10 +45,14 @@ code {
 
 
 .game-map {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
   border: 1px solid lightgray;
 }
+
+.away-team, .home-team {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+
 
 .game-description {
   width: fit-content;

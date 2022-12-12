@@ -12,6 +12,7 @@ const GamesList = ({ user }) => {
   const [games, setGames] = useState([])
   const [odds, setOdds] = useState(null)
   const [betSlipOpen, setBetSlipOpen] = useState(false)
+  const [betDetails, setBetDetails] = useState(null)
 
   const getGames = async () => {
     let res = await axios.get(
@@ -83,6 +84,7 @@ const GamesList = ({ user }) => {
   const handleBet = (e, info) => {
     setBetSlipOpen(true)
     console.log(info)
+    setBetDetails(info)
     console.log(e.target.id)
     setOdds(e.target.id)
     // setOdds(parseFloat(e.target.id))
@@ -99,7 +101,7 @@ const GamesList = ({ user }) => {
         <p>Total</p>
       </div>
       <Game games={games} handleBet={handleBet} />
-      <BetSlip betSlipOpen={betSlipOpen} odds={odds} />
+      <BetSlip betSlipOpen={betSlipOpen} odds={odds} betDetails={betDetails} />
     </div>
   )
 }
