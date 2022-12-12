@@ -11,7 +11,6 @@ const AwaySpread = ({
   const handleSpread = (e) => {
     setPredictedTeam(game.away_team)
     setPoints(game.away_spread.points)
-    console.log(points)
     handleBet(e, game, 'spread', predictedTeam, points)
   }
 

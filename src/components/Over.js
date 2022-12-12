@@ -1,9 +1,22 @@
-const Over = ({ game, handleBet }) => {
+const Over = ({
+  game,
+  handleBet,
+  setPredictedTeam,
+  predictedTeam,
+  points,
+  setPoints
+}) => {
+  const handleOver = (e) => {
+    setPredictedTeam('Over')
+    setPoints(game.over.points)
+    handleBet(e, game, 'total match points', predictedTeam, points)
+  }
+
   return (
     <div
       className="game-totals"
       tabIndex={3}
-      onClick={(e) => handleBet(e, game)}
+      onClick={(e) => handleOver(e)}
       id={game.over.price}
     >
       <p>O {game.over.points}</p>

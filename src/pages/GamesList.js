@@ -88,9 +88,6 @@ const GamesList = ({ user }) => {
     setBetSlipOpen(true)
     setBetDetails(info)
     setBetType(type)
-    // console.log(team)
-    console.log(spread)
-    // setPoints(pointSpread)
     setOdds(e.target.id)
     // setOdds(parseFloat(e.target.id))
   }

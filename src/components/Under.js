@@ -1,8 +1,20 @@
-const Under = ({ game, handleBet }) => {
+const Under = ({
+  game,
+  handleBet,
+  predictedTeam,
+  setPredictedTeam,
+  points,
+  setPoints
+}) => {
+  const handleUnder = (e) => {
+    setPredictedTeam('Under')
+    setPoints(game.under.points)
+    handleBet(e, game, 'total match points', predictedTeam, points)
+  }
   return (
     <div
       className="game-totals"
-      onClick={(e) => handleBet(e, game)}
+      onClick={(e) => handleUnder(e)}
       id={game.under.price}
       tabIndex="6"
     >
