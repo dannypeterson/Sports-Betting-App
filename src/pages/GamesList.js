@@ -4,16 +4,14 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Nav from '../components/Nav'
 import Game from '../components/Game'
+import BetSlip from '../components/BetSlip'
 
 const GamesList = ({ user }) => {
   const API_KEY = process.env.REACT_APP_ODDS_API_KEY
 
   const [games, setGames] = useState([])
-  const [betSlip, setBetSlip] = useState(false)
   const [odds, setOdds] = useState(null)
-  const [wager, setWager] = useState(null)
-  const [payout, setPayout] = useState(0)
-  const [newDate, setNewDate] = useState(null)
+  const [betSlipOpen, setBetSlipOpen] = useState(false)
 
   const getGames = async () => {
     let res = await axios.get(
@@ -81,22 +79,10 @@ const GamesList = ({ user }) => {
     getGames()
   }, [])
 
-  const handleChange = (e) => {
-    setWager(e.target.value)
-
-    if (odds < 0) {
-      let pay = Math.round((100 / odds) * wager * -1)
-      setPayout(pay)
-    } else {
-      let pay = Math.round((odds / 100) * wager)
-      setPayout(pay)
-    }
-  }
-
   // try async to fix delay?
   const handleBet = (e, info) => {
+    setBetSlipOpen(true)
     console.log(info)
-    setBetSlip(true)
     console.log(e.target.id)
     setOdds(e.target.id)
     // setOdds(parseFloat(e.target.id))
@@ -113,23 +99,7 @@ const GamesList = ({ user }) => {
         <p>Total</p>
       </div>
       <Game games={games} handleBet={handleBet} />
-      <div className="betslip">
-        {betSlip ? (
-          <div>
-            <h2>Bet Slip: </h2>
-            <p>{odds}</p>
-            <form>
-              <input
-                type="text"
-                placeholder="Enter wager here"
-                onChange={handleChange}
-              />
-              <button className="submit-bet-button">Place bet</button>
-            </form>
-            <p>To win: ${payout}</p>
-          </div>
-        ) : null}
-      </div>
+      <BetSlip betSlipOpen={betSlipOpen} odds={odds} />
     </div>
   )
 }

@@ -1,3 +1,7 @@
+import Moneyline from './Moneyline'
+import Spread from './Spread'
+import Total from './Total'
+
 const Game = ({ games, handleBet }) => {
   return (
     <div className="game-map-container">
@@ -19,14 +23,7 @@ const Game = ({ games, handleBet }) => {
             </div>
           </div>
 
-          <div
-            className="game-moneyline"
-            tabIndex={2}
-            id={game.away_ML}
-            onClick={(e) => handleBet(e, game)}
-          >
-            <p>{game.away_ML}</p>
-          </div>
+          <Moneyline game={game} handleBet={handleBet} />
 
           {game.over ? (
             <div
