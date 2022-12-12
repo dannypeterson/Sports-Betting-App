@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { axios } from 'axios'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../services/api'
 
@@ -13,8 +14,11 @@ const BetSlip = ({
 }) => {
   let navigate = useNavigate()
 
+  let gameExists
+
   const [wager, setWager] = useState(null)
   const [payout, setPayout] = useState(0)
+  const [gamesList, setGamesList] = useState(null)
 
   const handleWager = (e) => {
     setWager(e.target.value)
@@ -28,6 +32,16 @@ const BetSlip = ({
     }
   }
 
+  const getAllGames = async () => {
+    let allGames = await Client.get(`/games`)
+    console.log(allGames.data)
+    setGamesList(allGames.data)
+  }
+
+  useEffect(() => {
+    getAllGames()
+  }, [])
+
   let betSlip = {
     user_id: user.id,
     game_id: betDetails.id,
@@ -40,8 +54,22 @@ const BetSlip = ({
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // let game = await Client.post(`/games`, betDetails)
-    let bet = await Client.post(`/bets`, betSlip)
+
+    gamesList.forEach((game) => {
+      console.log(game.id)
+      if (game.id == betDetails.id) {
+        gameExists = true
+      }
+    })
+
+    if (gameExists) {
+      let bet = await Client.post(`/bets`, betSlip)
+    } else {
+      let game = await Client.post(`/games`, betDetails)
+      let bet = await Client.post(`/bets`, betSlip)
+    }
+    // console.log(gameExists)
+
     user.balance = user.balance - wager
     console.log('Bet has been placed')
     console.log(user.balance)
