@@ -110,3 +110,53 @@ background-color: rgb(223, 238, 253);
   flex-direction: row;
   justify-content: space-around;
 }
+
+.form-inputs {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.bet-outer-container {
+  width: 250px;
+  height: 50px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.bet-inner-container {
+  width: 200px;
+  height: 34px;
+}
+
+.bet-inner-container > span {
+  color: rgb(121, 121, 121);
+  font-size: 14px;
+}
+
+.wager-input, .to-win-input {
+  border: none;
+  font-size: 16px;
+}
+
+.betslip-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.submit-bet-button {
+  width: auto;
+  height: 50px;
+  margin: 5px;
+  background-color: rgb(27, 177, 82);
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  color: white;
+  font-size: large;
+  cursor: pointer;
+}
+
+.submit-bet-button:hover {
+  background-color: rgb(23, 157, 72) ;
+}

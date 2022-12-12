@@ -41,15 +41,32 @@ const BetSlip = ({
           <p>
             {betDetails.away_team} @ {betDetails.home_team}
           </p>
-          <form>
-            <input
-              type="text"
-              placeholder="Enter wager here"
-              onChange={handleWager}
-            />
+          <form className="betslip-form">
+            <div className="form-inputs">
+              <div className="bet-outer-container">
+                <div className="bet-inner-container">
+                  <span>WAGER</span>
+                  <div>
+                    <span>$</span>
+                    <input
+                      className="wager-input"
+                      type="text"
+                      onChange={handleWager}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="bet-outer-container">
+                <div className="bet-inner-container">
+                  <span>TO WIN</span>
+                  <div>
+                    <span>${payout}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
             <button className="submit-bet-button">Place bet</button>
           </form>
-          <p>To win: ${payout}</p>
         </div>
       ) : null}
     </div>
