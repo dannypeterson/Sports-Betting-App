@@ -28,9 +28,20 @@ const BetSlip = ({
     }
   }
 
+  let betSlip = {
+    user_id: user.id,
+    game_id: betDetails.id,
+    type: betType,
+    team: predictedTeam,
+    odds: odds,
+    points: points,
+    wager: wager,
+    to_win: payout
+  }
   const handleSubmit = async (e) => {
     e.preventDefault()
-    let res = await Client.post(`/games`, betDetails)
+    // let game = await Client.post(`/games`, betDetails)
+    let bet = await Client.post(`/bets`, betSlip)
     user.balance = user.balance - wager
     console.log('Bet has been placed')
     console.log(user.balance)

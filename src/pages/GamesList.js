@@ -86,8 +86,8 @@ const GamesList = ({ user }) => {
 
   const handleBet = (e, info, type, team, spread) => {
     setBetSlipOpen(true)
-    console.log(info)
     setBetDetails(info)
+    console.log(betDetails)
     setBetType(type)
     setOdds(e.target.id)
     // setOdds(parseFloat(e.target.id))
