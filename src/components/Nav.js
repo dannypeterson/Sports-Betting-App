@@ -13,7 +13,7 @@ const Nav = ({ user }) => {
       <nav>
         <ul className="nav_links">
           <li onClick={() => navigate('/scores')}>Scores</li>
-          <li onClick={() => navigate('/profile')}>{user.username}</li>
+          <li onClick={() => navigate('/profile')}>@{user.username}</li>
           <li>${user.balance}</li>
         </ul>
       </nav>

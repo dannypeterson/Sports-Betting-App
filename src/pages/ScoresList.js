@@ -2,8 +2,9 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 
 import Scores from '../components/Score'
+import Nav from '../components/Nav'
 
-const ScoresList = () => {
+const ScoresList = ({ user }) => {
   const API_KEY = process.env.REACT_APP_ODDS_API_KEY
 
   const [scores, setScores] = useState([])
@@ -48,6 +49,8 @@ const ScoresList = () => {
 
   return (
     <div className="scores-container">
+      {user ? <Nav user={user} /> : null}
+
       <h2>Scores</h2>
       <Scores scores={scores} />
     </div>
