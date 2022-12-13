@@ -1,8 +1,8 @@
-const ActiveBet = ({ myBets }) => {
+const ActiveBet = ({ activeBets }) => {
   return (
     <div className="active-bets">
       <div className="profile-bets">
-        {myBets?.map((bet) => (
+        {activeBets?.map((bet) => (
           <div className="profile-bets-map" key={bet.id}>
             <div className="profile-bet-details">
               <div>

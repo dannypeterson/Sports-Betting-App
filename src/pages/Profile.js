@@ -17,7 +17,7 @@ const Profile = ({ user }) => {
 
     if (user) {
       let res = await Client.get(`/bets/users/${user.id}`)
-      console.log(res.data)
+      // console.log(res.data)
       res.data.forEach((game) => {
         if (game.inProgress !== false) {
           activeBetsArray.push(game)
@@ -27,8 +27,8 @@ const Profile = ({ user }) => {
       })
       setActiveBets(activeBetsArray)
       setSettledBets(settledBetsArray)
-      console.log(activeBets)
-      console.log(settledBets)
+      // console.log(activeBets)
+      // console.log(settledBets)
     }
   }
 
@@ -43,7 +43,7 @@ const Profile = ({ user }) => {
       <h3>Active</h3>
       <ActiveBet activeBets={activeBets} />
       <h3>Settled</h3>
-      {/* <SettledBet myBets={myBets} /> */}
+      <SettledBet settledBets={settledBets} />
     </div>
   )
 }

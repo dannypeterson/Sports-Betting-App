@@ -1,8 +1,8 @@
-const SettledBet = ({ myBets }) => {
+const SettledBet = ({ settledBets }) => {
   return (
     <div className="settled-bets">
       <div className="profile-bets">
-        {/* {myBets?.map((bet) => (
+        {settledBets?.map((bet) => (
           <div className="profile-bets-map" key={bet.id}>
             <div className="profile-bet-details">
               <div>
@@ -20,7 +20,7 @@ const SettledBet = ({ myBets }) => {
               <p>{bet.Game.date}</p>
             </div>
           </div>
-        ))} */}
+        ))}
       </div>
     </div>
   )
