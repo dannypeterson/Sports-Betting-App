@@ -17,12 +17,12 @@ code {
 .logo {
   width: auto;
   height: 100px;
-  margin: 10px
+  margin: 10px 0px;
 }
 .nav {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -36,7 +36,7 @@ display: flex;
 
 .nav_links li{
   display: inline-block;
-  padding: 0px 40px;
+  padding: 0px 10px;
   cursor: pointer;
 }
 
@@ -164,4 +164,21 @@ background-color: rgb(223, 238, 253);
 
 .submit-bet-button:hover {
   background-color: rgb(23, 157, 72) ;
+}
+
+/* profile section */
+
+.profile-bets-map {
+  border: 1px solid lightgray;
+}
+
+.profile-bet-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.profile-bet-date {
+  display: flex;
+  justify-content: space-around;
 }

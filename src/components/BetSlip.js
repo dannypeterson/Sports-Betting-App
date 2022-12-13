@@ -35,7 +35,7 @@ const BetSlip = ({
 
   const getAllGames = async () => {
     let allGames = await Client.get(`/games`)
-    console.log(allGames.data)
+    // console.log(allGames.data)
     setGamesList(allGames.data)
   }
 
@@ -51,7 +51,8 @@ const BetSlip = ({
     odds: odds,
     points: points,
     wager: wager,
-    to_win: payout
+    to_win: payout,
+    inProgress: true
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
