@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Register from './pages/Register'
 import GamesList from './pages/GamesList'
 import Profile from './pages/Profile'
+import ScoresList from './pages/ScoresList'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -35,6 +36,7 @@ function App() {
           <Route path="/" element={<Register />} />
           <Route path="/home" element={<Home setUser={setUser} />} />
           <Route path="/games" element={<GamesList user={user} />} />
+          <Route path="/scores" element={<ScoresList user={user} />} />
           <Route path="/profile" element={<Profile user={user} />} />
         </Routes>
       </main>

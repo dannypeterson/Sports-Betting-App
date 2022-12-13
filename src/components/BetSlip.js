@@ -58,7 +58,8 @@ const BetSlip = ({
 
     gamesList.forEach((game) => {
       console.log(game.id)
-      if (game.id == betDetails.id) {
+      // changed betDetails.id to gameId state
+      if (game.id == gameId) {
         gameExists = true
       }
     })
