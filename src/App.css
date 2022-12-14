@@ -29,6 +29,8 @@ code {
   justify-content: center;
   align-items: center;
   color: white;
+  font-family: 'Chivo Mono', monospace;
+
 }
 
 .register-title > h1{
@@ -36,7 +38,7 @@ color: white
 }
 .sign-up-card {
   width: 420px;
-  height: 684px;
+  height: 584px;
   background-color: #ffffff;
   border-radius: 15px;
   display: flex;
@@ -68,6 +70,14 @@ color: white
 .already-registered-button:hover {
   background-color:rgb(6, 6, 128);
 }
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .input-outer-container {
   width: 250px;
   height: 50px;
@@ -87,11 +97,15 @@ color: white
   font-size: 14px;
 }
 
+.terms {
+  font-size: smaller;
+  color: rgb(122, 122, 122);
+  padding: 0 40px;
+}
 
-/* .register-form {
-  display: flex;
-  flex-direction: column;
-} */
+.terms > p {
+  margin: 10px;
+}
 
 
 /* nav bar  */

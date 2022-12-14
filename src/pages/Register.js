@@ -41,6 +41,7 @@ const Register = () => {
   return (
     <div className="register-container">
       <h1>Pigskin Picks</h1>
+      <img className="logo" src="../../assets/images/logo.png"></img>
       <h3>A parlay a day keeps the worries away!</h3>
       <div className="sign-up-card">
         <p>Create a Pigskin account</p>
@@ -110,13 +111,24 @@ const Register = () => {
               />
             </div>
           </div>
-
           <br />
-
-          <button className="register-button" type="submit">
+          <button className="already-registered-button" type="submit">
             Sign Up!
           </button>
         </form>
+        <div className="terms">
+          <p>
+            By creating an account you are agreeing to Pigskin Pick's Terms of
+            Use and Privacy Policy and to be updated about Pigskin Picks
+            products, news, and promotions. Users must be 21+ to place bets on
+            Sportsbook.
+          </p>
+          <p>
+            Please play responsibly, for help visit{' '}
+            <a href="http://mdgamblinghelp.org">mdgamblinghelp.org</a> or call
+            1-800-GAMBLER
+          </p>
+        </div>
       </div>
     </div>
   )
