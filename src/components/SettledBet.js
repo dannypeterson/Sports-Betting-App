@@ -14,6 +14,7 @@ const SettledBet = ({ settledBets, gamesInDb, user }) => {
                 gamesInDb={gamesInDb}
                 settledBets={settledBets}
                 user={user}
+                bet={bet}
               />
             ) : null}
 
