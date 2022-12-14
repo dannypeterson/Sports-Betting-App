@@ -4,7 +4,7 @@ const Nav = ({ user }) => {
   let navigate = useNavigate()
 
   return (
-    <header className="nav">
+    <header className="nav-header">
       <img
         src="'../../assets/images/logo.png"
         alt="logo"
