@@ -182,3 +182,17 @@ background-color: rgb(223, 238, 253);
   display: flex;
   justify-content: space-around;
 }
+
+/* scores page  */
+.scores-map {
+  display: flex;
+  justify-content: space-between;
+}
+
+.scores-map > p {
+  margin-right: 50px;
+}
+
+.live-game {
+  color: red;
+}

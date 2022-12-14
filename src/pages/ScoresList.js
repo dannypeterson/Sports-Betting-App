@@ -3,11 +3,17 @@ import { useState, useEffect } from 'react'
 
 import Scores from '../components/Score'
 import Nav from '../components/Nav'
+import Client from '../services/api'
 
-const ScoresList = ({ user }) => {
+const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
   const API_KEY = process.env.REACT_APP_ODDS_API_KEY
 
   const [scores, setScores] = useState([])
+
+  const updateGames = async () => {
+    console.log('running updateGames function')
+    await Client.put(`/games`, gamesInDb)
+  }
 
   const getScores = async () => {
     let scoresArray = []
@@ -35,8 +41,29 @@ const ScoresList = ({ user }) => {
       }
 
       if (Object.keys(scoreDetails).length !== 0) {
-        console.log(scoreDetails)
         scoresArray.push(scoreDetails)
+
+        let gamesArray = [...gamesInDb]
+
+        gamesInDb?.forEach(async (game, index) => {
+          if (
+            game.id === scoreDetails.gameId &&
+            scoreDetails.completed === true
+          ) {
+            console.log(`matched id found ${game.id}`)
+
+            let updatedGame = {
+              ...game,
+              inProgress: false
+            }
+
+            gamesArray.splice(index, 1, updatedGame)
+            console.log(gamesArray)
+            setGamesInDb(gamesArray)
+            // await updateGames()
+            console.log('finished')
+          }
+        })
       }
     })
 

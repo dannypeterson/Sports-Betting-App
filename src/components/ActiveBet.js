@@ -17,9 +17,9 @@ const ActiveBet = ({ activeBets }) => {
             </div>
             <div className="profile-bet-date">
               <p>
-                {bet.Game.away_team} @ {bet.Game.home_team}
+                {bet.Game?.away_team} @ {bet.Game?.home_team}
               </p>
-              <p>{bet.Game.date}</p>
+              <p>{bet.Game?.date}</p>
             </div>
           </div>
         ))}

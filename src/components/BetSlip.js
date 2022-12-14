@@ -11,7 +11,8 @@ const BetSlip = ({
   betType,
   points,
   user,
-  gameId
+  gameId,
+  gamesInDb
 }) => {
   let navigate = useNavigate()
 
@@ -19,7 +20,6 @@ const BetSlip = ({
 
   const [wager, setWager] = useState(null)
   const [payout, setPayout] = useState(0)
-  const [gamesList, setGamesList] = useState(null)
 
   const handleWager = (e) => {
     setWager(e.target.value)
@@ -33,18 +33,8 @@ const BetSlip = ({
     }
   }
 
-  const getAllGames = async () => {
-    let allGames = await Client.get(`/games`)
-    // console.log(allGames.data)
-    setGamesList(allGames.data)
-  }
-
-  useEffect(() => {
-    getAllGames()
-  }, [])
-
   let betSlip = {
-    user_id: user.id,
+    user_id: user?.id,
     game_id: gameId,
     type: betType,
     team: predictedTeam,
@@ -57,7 +47,7 @@ const BetSlip = ({
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    gamesList.forEach((game) => {
+    gamesInDb?.forEach((game) => {
       console.log(game.id)
       // changed betDetails.id to gameId state
       if (game.id == gameId) {
@@ -86,9 +76,9 @@ const BetSlip = ({
           <div className="bet-header">
             <div>
               <h3>
-                {predictedTeam} {points}
+                {predictedTeam} {points ? points : null}
               </h3>
-              <p>{betType.toUpperCase()}</p>
+              <p>{betType?.toUpperCase()}</p>
             </div>
             <div>
               <p>{odds}</p>

@@ -6,7 +6,7 @@ import Nav from '../components/Nav'
 import Game from '../components/Game'
 import BetSlip from '../components/BetSlip'
 
-const GamesList = ({ user }) => {
+const GamesList = ({ user, gamesInDb, setGamesInDb }) => {
   const API_KEY = process.env.REACT_APP_ODDS_API_KEY
 
   const [games, setGames] = useState([])
@@ -61,7 +61,8 @@ const GamesList = ({ user }) => {
           price: spread[0].price
         },
         date: dateString,
-        id: game.id
+        id: game.id,
+        inProgress: true
       }
 
       if (totals) {
@@ -122,6 +123,7 @@ const GamesList = ({ user }) => {
         points={points}
         user={user}
         gameId={gameId}
+        gamesInDb={gamesInDb}
       />
     </div>
   )

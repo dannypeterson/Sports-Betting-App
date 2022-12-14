@@ -27,8 +27,6 @@ const Profile = ({ user }) => {
       })
       setActiveBets(activeBetsArray)
       setSettledBets(settledBetsArray)
-      // console.log(activeBets)
-      // console.log(settledBets)
     }
   }
 
