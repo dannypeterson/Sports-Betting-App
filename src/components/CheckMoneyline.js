@@ -23,15 +23,27 @@ const CheckWinner = ({ gamesInDb, settledBets, user }) => {
           setWonBet(true)
           console.log('Balance has increased')
           console.log(user.balance)
+          return
         } else {
           console.log('Bet did not hit')
           console.log('Balance has decreased')
           console.log(user.balance)
+          return
+        }
+      } else if (bet.type === 'spread') {
+        let gameSpread = Math.abs(
+          gamesInDb[8].away_team_score - gamesInDb[8].home_team_score
+        )
+        console.log(bet.points)
+        let a = -2.5
+        if (a > 0 && gameSpread < bet.points) {
+          console.log('bet hit')
+          setWonBet(true)
+        } else {
+          console.log('not hit')
+          setWonBet(false)
         }
       }
-      // else if (bet.type === 'spread') {
-
-      // }
     })
   }
 
