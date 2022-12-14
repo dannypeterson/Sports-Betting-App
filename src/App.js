@@ -19,6 +19,10 @@ function App() {
     // console.log(res.data)
     setGamesInDb(res.data)
   }
+  const updateGames = async () => {
+    await Client.put(`/games`, gamesInDb)
+    console.log('ran updateGames function')
+  }
 
   const checkToken = async () => {
     const user = await CheckSession()
@@ -66,7 +70,13 @@ function App() {
           />
           <Route
             path="/profile"
-            element={<Profile user={user} gamesInDb={gamesInDb} />}
+            element={
+              <Profile
+                user={user}
+                gamesInDb={gamesInDb}
+                updateGames={updateGames}
+              />
+            }
           />
         </Routes>
       </main>

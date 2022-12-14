@@ -4,8 +4,10 @@ const Scores = ({ scores }) => {
       {scores?.map((score) => (
         <div className="scores-map" key={score.gameId}>
           <h3>
-            {score.away_team[0].name} {score.away_team[0].score} @{' '}
-            {score.home_team[0].name} {score.home_team[0].score}
+            {score.away_team[0].name}{' '}
+            <span className="score">{score.away_team[0].score}</span> @{' '}
+            {score.home_team[0].name}{' '}
+            <span className="score">{score.home_team[0].score}</span>
           </h3>
           <p>
             {score.completed === true ? (

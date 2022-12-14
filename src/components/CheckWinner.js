@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 
 const CheckWinner = ({ gamesInDb, settledBets, user }) => {
   const [winner, setWinner] = useState(null)
+  const [wonBet, setWonBet] = useState(false)
 
   const getWinner = () => {
     settledBets.forEach((bet) => {
@@ -16,24 +17,36 @@ const CheckWinner = ({ gamesInDb, settledBets, user }) => {
         } else {
           setWinner(gamesInDb[7].home_team)
         }
+        if (winner == settledBets.team) {
+          console.log('moneyline hit')
+          user.balance = user.balance + bet.to_win
+          setWonBet(true)
+          console.log('Balance has increased')
+          console.log(user.balance)
+        } else {
+          console.log('Bet did not hit')
+          console.log('Balance has decreased')
+          console.log(user.balance)
+        }
       }
-      if (winner == settledBets.team) {
-        console.log('moneyline hit')
-        user.balance = user.balance + bet.to_win
-        console.log('Balance has increased')
-        console.log(user.balance)
-      } else {
-        console.log('Bet did not hit')
-        console.log('Balance has decreased')
-        console.log(user.balance)
-      }
+      // else if (bet.type === 'spread') {
+
+      // }
     })
   }
 
   useEffect(() => {
     getWinner()
   }, [])
-  return <div>a</div>
+  return (
+    <div>
+      {wonBet ? (
+        <p className="bet-win-condition">WON</p>
+      ) : (
+        <p className="bet-lose-condition">LOST</p>
+      )}
+    </div>
+  )
 }
 
 export default CheckWinner

@@ -187,12 +187,37 @@ background-color: rgb(223, 238, 253);
 .scores-map {
   display: flex;
   justify-content: space-between;
+  border: 1px solid lightgray;
 }
 
 .scores-map > p {
   margin-right: 50px;
 }
 
+
 .live-game {
   color: red;
+}
+
+.score { 
+  font-size: larger;
+}
+
+.scores-header {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* my bets  */
+.bet-win-condition {
+  color: green
+}
+
+.bet-lose-condition {
+  color: red;
+}
+
+.bet-status-header {
+  display: flex;
+  justify-content: space-evenly;
 }

@@ -10,11 +10,6 @@ const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
 
   const [scores, setScores] = useState(null)
 
-  const updateGames = async () => {
-    await Client.put(`/games`, gamesInDb)
-    console.log('ran updateGames function')
-  }
-
   const getScores = async () => {
     let scoresArray = []
 
@@ -32,26 +27,27 @@ const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
         scoreDetails.gameId = game.id
         scoreDetails.completed = game.completed
 
+        // grabbing away team name and scores in an object, pushing to scoreDetails {}
         let awayTeamObject = gamesScores.filter(
           (team) => team.name === game.away_team
         )
         scoreDetails.away_team = awayTeamObject
-        // console.log(scoreDetails.away_team)
 
+        // grabbing home team name and scores in one object, pushing to scoreDetails {}
         let homeTeamObject = gamesScores.filter(
           (team) => team.name === game.home_team
         )
         scoreDetails.home_team = homeTeamObject
-        // console.log(scoreDetails.home_team)
       }
 
+      //find scoreDetails {} that have scores (not empty) and push to scoresArray
       if (Object.keys(scoreDetails).length !== 0) {
         scoresArray.push(scoreDetails)
 
         let gamesArray = [...gamesInDb]
 
+        // if the id is already in the db === api call game id AND game is completed
         gamesInDb?.forEach((game, index) => {
-          // if the id already in the db === api call game id AND game is completed
           if (
             game?.id === scoreDetails.gameId &&
             scoreDetails.completed === true
@@ -68,7 +64,6 @@ const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
 
             gamesArray.splice(index, 1, updatedGame)
             setGamesInDb(gamesArray)
-            console.log(gamesInDb)
 
             // updateGames()
           }
@@ -86,8 +81,9 @@ const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
   return (
     <div className="scores-container">
       {user ? <Nav user={user} /> : null}
-
-      <h2>Scores</h2>
+      <div className="scores-header">
+        <h2>Scores</h2>
+      </div>
       <Scores scores={scores} />
     </div>
   )
