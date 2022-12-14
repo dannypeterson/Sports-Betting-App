@@ -31,7 +31,6 @@ const Register = () => {
         email: formState.email,
         password: formState.password
       })
-      console.log(formState)
 
       setFormState(initialState)
       navigate('/home')

@@ -35,35 +35,50 @@ const Home = ({ setUser }) => {
       <div className="home-title">
         <h1>Login to Pigskin Picks</h1>
       </div>
+      <img className="logo" src="../../assets/images/logo.png"></img>
       <form className="login-form" onSubmit={handleSubmit}>
         {/* email label  */}
-        <input
-          required
-          id="email"
-          value={formState.email}
-          placeholder="Email"
-          type="email"
-          onChange={handleChange}
-        />
+        <div className="input-outer-container">
+          <div className="input-inner-container">
+            <span>EMAIL</span>
+            <input
+              required
+              id="email"
+              value={formState.email}
+              className="wager-input"
+              type="email"
+              onChange={handleChange}
+            />
+          </div>
+        </div>
         <br />
 
         {/* password label  */}
-        <input
-          required
-          id="password"
-          value={formState.password}
-          placeholder="Password"
-          type="password"
-          onChange={handleChange}
-        />
+        <div className="input-outer-container">
+          <div className="input-inner-container">
+            <span>PASSWORD</span>
+            <input
+              required
+              id="password"
+              value={formState.password}
+              className="wager-input"
+              type="password"
+              onChange={handleChange}
+            />
+          </div>
+        </div>
         <br />
 
-        <button className="login-button" onClick={() => setLogin(true)}>
+        <button
+          className="already-registered-button"
+          onClick={() => setLogin(true)}
+        >
           Sign In
         </button>
       </form>
-      <p>Dont have an account?</p>
-      <button onClick={() => navigate('/')}>Register Here</button>
+      <button className="back-to-register" onClick={() => navigate('/')}>
+        Don't have an account? Register Here.
+      </button>
     </div>
   )
 }
