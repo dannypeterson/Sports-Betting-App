@@ -11,8 +11,8 @@ const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
   const [scores, setScores] = useState([])
 
   const updateGames = async () => {
-    console.log('running updateGames function')
     await Client.put(`/games`, gamesInDb)
+    console.log('ran updateGames function')
   }
 
   const getScores = async () => {
@@ -58,9 +58,10 @@ const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
             }
 
             gamesArray.splice(index, 1, updatedGame)
-            console.log(gamesArray)
+            // console.log(gamesArray)
             setGamesInDb(gamesArray)
-            // await updateGames()
+
+            await updateGames()
             console.log('finished')
           }
         })

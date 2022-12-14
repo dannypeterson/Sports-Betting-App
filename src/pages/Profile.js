@@ -17,9 +17,9 @@ const Profile = ({ user }) => {
 
     if (user) {
       let res = await Client.get(`/bets/users/${user.id}`)
-      // console.log(res.data)
+      console.log(res.data)
       res.data.forEach((game) => {
-        if (game.inProgress !== false) {
+        if (game.Game.inProgress !== false) {
           activeBetsArray.push(game)
         } else {
           settledBetsArray.push(game)
