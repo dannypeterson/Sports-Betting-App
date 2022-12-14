@@ -1,7 +1,7 @@
 const Scores = ({ scores }) => {
   return (
     <div>
-      {scores.map((score) => (
+      {scores?.map((score) => (
         <div className="scores-map" key={score.gameId}>
           <h3>
             {score.away_team[0].name} {score.away_team[0].score} @{' '}

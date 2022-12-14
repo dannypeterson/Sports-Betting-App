@@ -8,7 +8,7 @@ import Client from '../services/api'
 const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
   const API_KEY = process.env.REACT_APP_ODDS_API_KEY
 
-  const [scores, setScores] = useState([])
+  const [scores, setScores] = useState(null)
 
   const updateGames = async () => {
     await Client.put(`/games`, gamesInDb)
@@ -17,6 +17,8 @@ const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
 
   const getScores = async () => {
     let scoresArray = []
+
+    // external api game scores
     let res = await axios.get(
       `https://api.the-odds-api.com/v4/sports/americanfootball_nfl/scores/?apiKey=${API_KEY}&daysFrom=3&dateFormat=unix`
     )
@@ -25,6 +27,7 @@ const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
       let scoreDetails = {}
       let gamesScores = game.scores
 
+      // only some games have scores so I only want those
       if (gamesScores) {
         scoreDetails.gameId = game.id
         scoreDetails.completed = game.completed
@@ -33,11 +36,13 @@ const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
           (team) => team.name === game.away_team
         )
         scoreDetails.away_team = awayTeamObject
+        // console.log(scoreDetails.away_team)
 
         let homeTeamObject = gamesScores.filter(
           (team) => team.name === game.home_team
         )
         scoreDetails.home_team = homeTeamObject
+        // console.log(scoreDetails.home_team)
       }
 
       if (Object.keys(scoreDetails).length !== 0) {
@@ -45,29 +50,32 @@ const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
 
         let gamesArray = [...gamesInDb]
 
-        gamesInDb?.forEach(async (game, index) => {
+        gamesInDb?.forEach((game, index) => {
+          // if the id already in the db === api call game id AND game is completed
           if (
-            game.id === scoreDetails.gameId &&
+            game?.id === scoreDetails.gameId &&
             scoreDetails.completed === true
           ) {
             console.log(`matched id found ${game.id}`)
 
             let updatedGame = {
               ...game,
-              inProgress: false
+              inProgress: false,
+              away_team_score: scoreDetails.away_team[0].score,
+              home_team_score: scoreDetails.home_team[0].score
             }
+            // console.log(updatedGame)
 
             gamesArray.splice(index, 1, updatedGame)
-            // console.log(gamesArray)
             setGamesInDb(gamesArray)
+            console.log(gamesInDb)
 
-            await updateGames()
-            console.log('finished')
+            // updateGames()
           }
         })
       }
     })
-
+    // console.log(scoresArray)
     setScores(scoresArray)
   }
 

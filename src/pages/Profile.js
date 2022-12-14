@@ -5,7 +5,7 @@ import Client from '../services/api'
 import ActiveBet from '../components/ActiveBet'
 import SettledBet from '../components/SettledBet'
 
-const Profile = ({ user }) => {
+const Profile = ({ user, gamesInDb }) => {
   let navigate = useNavigate()
 
   const [activeBets, setActiveBets] = useState([])
@@ -17,7 +17,7 @@ const Profile = ({ user }) => {
 
     if (user) {
       let res = await Client.get(`/bets/users/${user.id}`)
-      console.log(res.data)
+      // console.log(res.data)
       res.data.forEach((game) => {
         if (game.Game.inProgress !== false) {
           activeBetsArray.push(game)
@@ -41,7 +41,7 @@ const Profile = ({ user }) => {
       <h3>Active</h3>
       <ActiveBet activeBets={activeBets} />
       <h3>Settled</h3>
-      <SettledBet settledBets={settledBets} />
+      <SettledBet settledBets={settledBets} gamesInDb={gamesInDb} />
     </div>
   )
 }

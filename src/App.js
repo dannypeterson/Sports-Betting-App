@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './App.css'
-import Client from './services/api'
 
 import { CheckSession } from './services/Auth'
 import Home from './pages/Home'
@@ -9,6 +8,7 @@ import Register from './pages/Register'
 import GamesList from './pages/GamesList'
 import Profile from './pages/Profile'
 import ScoresList from './pages/ScoresList'
+import Client from './services/api'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -64,7 +64,10 @@ function App() {
               />
             }
           />
-          <Route path="/profile" element={<Profile user={user} />} />
+          <Route
+            path="/profile"
+            element={<Profile user={user} gamesInDb={gamesInDb} />}
+          />
         </Routes>
       </main>
     </div>

@@ -1,9 +1,12 @@
-const SettledBet = ({ settledBets }) => {
+import CheckWinner from './CheckWinner'
+
+const SettledBet = ({ settledBets, gamesInDb }) => {
   return (
     <div className="settled-bets">
       <div className="profile-bets">
         {settledBets?.map((bet) => (
           <div className="profile-bets-map" key={bet.id}>
+            <CheckWinner gamesInDb={gamesInDb} settledBets={settledBets} />
             <div className="profile-bet-details">
               <div>
                 <h3>{bet.team}</h3>

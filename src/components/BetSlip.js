@@ -41,8 +41,7 @@ const BetSlip = ({
     odds: odds,
     points: points,
     wager: wager,
-    to_win: payout,
-    inProgress: true
+    to_win: payout
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
