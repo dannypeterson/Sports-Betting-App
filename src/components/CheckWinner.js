@@ -1,38 +1,31 @@
+import userEvent from '@testing-library/user-event'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 
-const CheckWinner = ({ gamesInDb, settledBets }) => {
+const CheckWinner = ({ gamesInDb, settledBets, user }) => {
+  const [winner, setWinner] = useState(null)
+
   const getWinner = () => {
     settledBets.forEach((bet) => {
-      let winner
-
       if (bet.type === 'moneyline') {
-        // let teamsObj = {
-        //   homeTeam: {
-        //     name: gamesInDb[7].home_team,
-        //     score: gamesInDb[7].home_team_score
-        //   },
-        //   awayTeam: {
-        //     name: gamesInDb[7].away_team,
-        //     score: gamesInDb[7].away_team_score
-        //   }
-        // }
-
-        // let winningScore = Math.max(
-        //   parseInt(gamesInDb[7].away_team_score),
-        //   parseInt(gamesInDb[7].home_team_score)
-        // )
-
         if (
           parseInt(gamesInDb[7].away_team_score) >
           parseInt(gamesInDb[7].home_team_score)
         ) {
-          winner = gamesInDb[7].away_team
+          setWinner(gamesInDb[7].away_team)
         } else {
-          winner = gamesInDb[7].home_team
+          setWinner(gamesInDb[7].home_team)
         }
-
-        console.log(winner)
+      }
+      if (winner == settledBets.team) {
+        console.log('moneyline hit')
+        user.balance = user.balance + bet.to_win
+        console.log('Balance has increased')
+        console.log(user.balance)
+      } else {
+        console.log('Bet did not hit')
+        console.log('Balance has decreased')
+        console.log(user.balance)
       }
     })
   }

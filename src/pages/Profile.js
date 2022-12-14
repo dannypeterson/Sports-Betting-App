@@ -41,7 +41,7 @@ const Profile = ({ user, gamesInDb }) => {
       <h3>Active</h3>
       <ActiveBet activeBets={activeBets} />
       <h3>Settled</h3>
-      <SettledBet settledBets={settledBets} gamesInDb={gamesInDb} />
+      <SettledBet settledBets={settledBets} gamesInDb={gamesInDb} user={user} />
     </div>
   )
 }
