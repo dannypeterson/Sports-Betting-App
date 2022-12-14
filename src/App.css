@@ -12,6 +12,88 @@ code {
     monospace;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* register page  */
+.register-container {
+  width: 100%;
+  height: 100vh;
+  background-image: url('https://wallpapersmug.com/download/1920x1080/2ba373/stadium-football-sports.jpg');
+  background-position: center;
+  background-size:cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.register-title > h1{
+color: white
+}
+.sign-up-card {
+  width: 420px;
+  height: 684px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(20, 20, 126);
+  padding: 20px
+}
+
+.sign-up-card > p {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.already-registered-button {
+  height: 44px;
+  width: 344px;
+  background-color:rgb(20, 20, 126);
+  color: white;
+  cursor: pointer;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:14px ;
+  margin-bottom: 10px;
+}
+
+.already-registered-button:hover {
+  background-color:rgb(6, 6, 128);
+}
+.input-outer-container {
+  width: 250px;
+  height: 50px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.input-inner-container {
+  width: 200px;
+  height: 34px;
+}
+
+.input-inner-container > span {
+  color: rgb(121, 121, 121);
+  font-size: 14px;
+}
+
+
+/* .register-form {
+  display: flex;
+  flex-direction: column;
+} */
+
+
 /* nav bar  */
 
 .logo {

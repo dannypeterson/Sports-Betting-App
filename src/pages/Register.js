@@ -40,66 +40,84 @@ const Register = () => {
 
   return (
     <div className="register-container">
-      <div className="register-title">
-        <h1>
-          Welcome to Pigskin Picks! You can start hitting those 7-leg parlays
-          once you sign up for an account!
-        </h1>
-      </div>
-      <form className="register-form" onSubmit={handleSubmit}>
+      <h1>Pigskin Picks</h1>
+      <h3>A parlay a day keeps the worries away!</h3>
+      <div className="sign-up-card">
+        <p>Create a Pigskin account</p>
         <div
           className="already-registered-button"
           onClick={() => navigate('/home')}
         >
-          Already have an account?
+          <p>Already have an account?</p>
         </div>
-        {/* email label  */}
-        <input
-          required
-          id="email"
-          type="email"
-          placeholder="Email"
-          onChange={handleChange}
-          value={formState.email}
-        />
-        <br />
-        {/* username label  */}
-        <input
-          required
-          id="username"
-          type="text"
-          placeholder="Pick a username"
-          onChange={handleChange}
-          value={formState.username}
-        />
-        <br />
+        <form className="register-form" onSubmit={handleSubmit}>
+          {/* email label  */}
+          <div className="input-outer-container">
+            <div className="input-inner-container">
+              <span>EMAIL</span>
+              <input
+                required
+                className="wager-input"
+                id="email"
+                type="email"
+                onChange={handleChange}
+                value={formState.email}
+              />
+            </div>
+          </div>
+          {/* username label  */}
+          <div className="input-outer-container">
+            <div className="input-inner-container">
+              <span>USERNAME</span>
+              <input
+                required
+                className="wager-input"
+                id="username"
+                type="text"
+                onChange={handleChange}
+                value={formState.username}
+              />
+            </div>
+          </div>
+          <br />
 
-        {/* password label  */}
-        <input
-          required
-          id="password"
-          type="password"
-          placeholder="Choose a password"
-          onChange={handleChange}
-          value={formState.password}
-        />
-        <br />
+          {/* password label  */}
+          <div className="input-outer-container">
+            <div className="input-inner-container">
+              <span>PASSWORD</span>
+              <input
+                required
+                id="password"
+                type="password"
+                onChange={handleChange}
+                value={formState.password}
+                className="wager-input"
+              />
+            </div>
+          </div>
+          {/* confirm password  */}
 
-        {/* confirm password  */}
-        <input
-          required
-          id="confirmPassword"
-          type="password"
-          placeholder="Confirm password"
-          onChange={handleChange}
-          value={formState.confirmPassword}
-        />
-        <br />
+          <div className="input-outer-container">
+            <div className="input-inner-container">
+              <span>CONFIRM PASSWORD</span>
+              <input
+                className="wager-input"
+                required
+                id="confirmPassword"
+                type="password"
+                onChange={handleChange}
+                value={formState.confirmPassword}
+              />
+            </div>
+          </div>
 
-        <button className="register-button" type="submit">
-          Sign Up!
-        </button>
-      </form>
+          <br />
+
+          <button className="register-button" type="submit">
+            Sign Up!
+          </button>
+        </form>
+      </div>
     </div>
   )
 }
