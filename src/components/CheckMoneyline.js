@@ -2,7 +2,7 @@ import userEvent from '@testing-library/user-event'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 
-const CheckWinner = ({ gamesInDb, settledBets, user, bet }) => {
+const CheckWinner = ({ gamesInDb, user, bet }) => {
   const [wonBet, setWonBet] = useState(false)
 
   const getWinner = () => {
@@ -10,7 +10,6 @@ const CheckWinner = ({ gamesInDb, settledBets, user, bet }) => {
 
     //first need to match up the bet id with the game id in gamesInDb
     let matchedGame = gamesInDb.find((game) => game.id === bet.Game.id)
-    // setMatch(matchedGame)
 
     if (
       parseInt(matchedGame.away_team_score) >
