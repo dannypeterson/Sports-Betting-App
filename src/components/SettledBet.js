@@ -10,30 +10,15 @@ const SettledBet = ({ settledBets, gamesInDb, user }) => {
         {settledBets?.map((bet) => (
           <div className="profile-bets-map" key={bet.id}>
             {bet.type === 'moneyline' ? (
-              <CheckMoneyline
-                gamesInDb={gamesInDb}
-                settledBets={settledBets}
-                user={user}
-                bet={bet}
-              />
+              <CheckMoneyline gamesInDb={gamesInDb} user={user} bet={bet} />
             ) : null}
 
             {bet.type === 'spread' ? (
-              <CheckSpread
-                gamesInDb={gamesInDb}
-                settledBets={settledBets}
-                user={user}
-                bet={bet}
-              />
+              <CheckSpread gamesInDb={gamesInDb} user={user} bet={bet} />
             ) : null}
 
             {bet.type === 'total match points' ? (
-              <CheckTotal
-                gamesInDb={gamesInDb}
-                settledBets={settledBets}
-                user={user}
-                bet={bet}
-              />
+              <CheckTotal gamesInDb={gamesInDb} user={user} bet={bet} />
             ) : null}
 
             <div className="profile-bet-details">

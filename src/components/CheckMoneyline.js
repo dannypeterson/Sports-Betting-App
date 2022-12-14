@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 

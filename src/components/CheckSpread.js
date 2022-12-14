@@ -12,7 +12,10 @@ const CheckSpread = ({ gamesInDb, bet, user }) => {
     let gameSpread = Math.abs(
       matchedGame.away_team_score - matchedGame.home_team_score
     )
-    if (bet.points > 0 && gameSpread < bet.points) {
+    if (bet.points > 0 && bet.points >= gameSpread) {
+      console.log('bet hit')
+      setWonBet(true)
+    } else if (bet.points < 0 && Math.abs(bet.points) <= gameSpread) {
       console.log('bet hit')
       setWonBet(true)
     } else {
