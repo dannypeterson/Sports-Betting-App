@@ -98,22 +98,27 @@ const GamesList = ({ user, gamesInDb, setGamesInDb }) => {
   return (
     <div className="game-container">
       <Nav user={user} />
-
-      <div className="game-columns">
-        <h4>NFL</h4>
-        <p>Spread</p>
-        <p>Moneyline</p>
-        <p>Total</p>
+      <div className="grid-container">
+        <section className="grid-1"></section>
+        <section className="grid-2">
+          <div className="game-columns">
+            <h4>NFL</h4>
+            <p>Spread</p>
+            <p>Moneyline</p>
+            <p>Total</p>
+          </div>
+          <Game
+            games={games}
+            handleBet={handleBet}
+            predictedTeam={predictedTeam}
+            setPredictedTeam={setPredictedTeam}
+            points={points}
+            setPoints={setPoints}
+            setGameId={setGameId}
+          />
+        </section>
+        <section className="grid-3"></section>
       </div>
-      <Game
-        games={games}
-        handleBet={handleBet}
-        predictedTeam={predictedTeam}
-        setPredictedTeam={setPredictedTeam}
-        points={points}
-        setPoints={setPoints}
-        setGameId={setGameId}
-      />
       <BetSlip
         betSlipOpen={betSlipOpen}
         odds={odds}

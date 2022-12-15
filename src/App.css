@@ -132,11 +132,12 @@ color: white
   justify-content: space-evenly;
   align-items: center;
   height: 120px;
+  background-color: #f5f8fc;
 }
 
 nav > ul {
 display: flex;
-color: rgb(20, 20, 126);
+color: #1b3152;
 font-weight: bold;
 }
 
@@ -162,11 +163,21 @@ font-weight: bold;
   /* font-family: 'Inconsolata', monospace; */
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+}
+
+.grid-1, .grid-3 {
+  background-color: #1b3152;
+}
+
 .game-columns {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   border: 1px solid lightgray;
-  background-color: #eff4fd;
+  /* border-top: none; */
+  background-color: #f5f8fc;
   padding: 7px 0px;
   justify-items: center;
 }
@@ -180,6 +191,7 @@ font-weight: bold;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   justify-items: center;
+  align-items: center;
 }
 
 
@@ -188,7 +200,8 @@ font-weight: bold;
 }
 
 .game-spread, .game-moneyline, .game-totals {
-  margin-top: 10px;
+  margin: 10px 0;
+  
 }
 
 .game-spread-price, .game-moneyline, .game-totals-price {
@@ -222,7 +235,7 @@ background-color: rgb(223, 238, 253);
   background-color: rgb(223, 238, 253);
 }
 
-
+/* bet slip  */
 .betslip {
   position: fixed;
   bottom: 0%;
@@ -237,12 +250,13 @@ background-color: rgb(223, 238, 253);
 .bet-header {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .form-inputs {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  padding: 10px;
 }
 
 .bet-outer-container {
@@ -273,6 +287,7 @@ background-color: rgb(223, 238, 253);
   display: flex;
   flex-direction: column;
 }
+
 
 .submit-bet-button {
   width: auto;

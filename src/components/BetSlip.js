@@ -48,7 +48,6 @@ const BetSlip = ({
 
     gamesInDb?.forEach((game) => {
       console.log(game.id)
-      // changed betDetails.id to gameId state
       if (game.id == gameId) {
         gameExists = true
       }
@@ -60,7 +59,6 @@ const BetSlip = ({
       let game = await Client.post(`/games`, betDetails)
       let bet = await Client.post(`/bets`, betSlip)
     }
-    // console.log(gameExists)
 
     user.balance = user.balance - wager
     console.log('Bet has been placed')
@@ -74,18 +72,22 @@ const BetSlip = ({
           <h2>Bet Slip: </h2>
           <div className="bet-header">
             <div>
-              <h3>
-                {predictedTeam} {points ? points : null}
-              </h3>
+              {betType === 'moneyline' ? (
+                <h3>{predictedTeam}</h3>
+              ) : (
+                <h3>
+                  {predictedTeam} {points}
+                </h3>
+              )}
               <p>{betType?.toUpperCase()}</p>
+              <p>
+                {betDetails.away_team} @ {betDetails.home_team}
+              </p>
             </div>
-            <div>
-              <p>{odds}</p>
+            <div className="bet-odds">
+              <h4>{odds}</h4>
             </div>
           </div>
-          <p>
-            {betDetails.away_team} @ {betDetails.home_team}
-          </p>
           <form className="betslip-form">
             <div className="form-inputs">
               <div className="bet-outer-container">
