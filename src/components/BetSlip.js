@@ -85,7 +85,7 @@ const BetSlip = ({
               </p>
             </div>
             <div className="bet-odds">
-              <h4>{odds}</h4>
+              {odds > 0 ? <h4>+{odds}</h4> : <h4>{odds}</h4>}
             </div>
           </div>
           <form className="betslip-form">
