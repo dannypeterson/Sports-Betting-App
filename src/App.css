@@ -385,11 +385,15 @@ background-color: rgb(223, 238, 253);
 }
 
 .bet-win-condition {
-  color: green
+  margin-top: 10px;
+  margin-left: 10px;
+  color: green;
 }
 
 .bet-lose-condition {
   color: red;
+  margin-top: 10px;
+  margin-left: 10px
 }
 
 .bet-status-header {
