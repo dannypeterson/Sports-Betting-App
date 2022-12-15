@@ -22,14 +22,20 @@ const SettledBet = ({ settledBets, gamesInDb, user }) => {
             ) : null}
 
             <div className="profile-bet-details">
-              <div>
-                <h3>
-                  {bet.team} {bet.points}
-                </h3>
+              <div className="profile-bet-header">
+                {bet.points > 0 ? (
+                  <h3>
+                    {bet.team} +{bet.points}
+                  </h3>
+                ) : (
+                  <h3>
+                    {bet.team} {bet.points}
+                  </h3>
+                )}
                 <p>{bet.type.toUpperCase()}</p>
               </div>
               <div>
-                <h3>{bet.odds}</h3>
+                {bet.odds > 0 ? <h3>+{bet.odds}</h3> : <h3>{bet.odds}</h3>}
               </div>
             </div>
             <div className="profile-bet-date">

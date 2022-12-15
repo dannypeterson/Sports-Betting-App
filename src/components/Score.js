@@ -12,7 +12,7 @@ const Scores = ({ scores }) => {
           </h3>
           <p>
             {score.completed === true ? (
-              <span>FINAL</span>
+              <span className="final-score">FINAL</span>
             ) : (
               <span className="live-game">LIVE</span>
             )}
