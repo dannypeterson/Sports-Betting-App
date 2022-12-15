@@ -20,9 +20,8 @@ const AwayMoneyline = ({
         tabIndex={2}
         id={game.away_ML}
         onClick={(e) => handleMoneyline(e)}
-        // onClick={(e) => handleBet(e, game, 'moneyline', 'arizone')}
       >
-        <p>{game.away_ML}</p>
+        {game.away_ML > 0 ? <p>+{game.away_ML}</p> : game.away_ML}
       </div>
     </div>
   )

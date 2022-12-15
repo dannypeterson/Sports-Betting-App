@@ -21,7 +21,7 @@ const HomeMoneyline = ({
         onClick={(e) => handleMoneyline(e)}
         tabIndex="5"
       >
-        <p>{game.home_ML}</p>
+        {game.home_ML > 0 ? <p>+{game.home_ML}</p> : game.home_ML}
       </div>
     </div>
   )

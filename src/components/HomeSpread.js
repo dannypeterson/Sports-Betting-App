@@ -21,8 +21,16 @@ const HomeSpread = ({
         onClick={(e) => handleSpread(e)}
         id={game.home_spread.price}
       >
-        <p>{game.home_spread.points}</p>
-        <p className="game-spread-price">{game.home_spread.price}</p>
+        {game.home_spread.points > 0 ? (
+          <p>+{game.home_spread.points}</p>
+        ) : (
+          <p>{game.home_spread.points}</p>
+        )}
+        {game.home_spread.price > 0 ? (
+          <p className="game-spread-price">+{game.home_spread.price}</p>
+        ) : (
+          <p className="game-spread-price">{game.home_spread.price}</p>
+        )}
       </div>
     </div>
   )

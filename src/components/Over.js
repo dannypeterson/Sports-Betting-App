@@ -22,7 +22,11 @@ const Over = ({
       id={game.over.price}
     >
       <p>O {game.over.points}</p>
-      <p className="game-totals-price">{game.over.price}</p>
+      {game.over.price > 0 ? (
+        <p className="game-totals-price">+{game.over.price}</p>
+      ) : (
+        <p className="game-totals-price">{game.over.price}</p>
+      )}
     </div>
   )
 }
