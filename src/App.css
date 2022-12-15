@@ -183,6 +183,10 @@ font-weight: bold;
   justify-items: center;
 }
 
+.team-logo {
+  width: 50px;
+  height: 50px;
+}
 
 .game-map {
   border: 1px solid lightgray;
@@ -193,6 +197,12 @@ font-weight: bold;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   justify-items: center;
   align-items: center;
+}
+
+.away-team-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 

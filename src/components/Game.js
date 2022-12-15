@@ -23,7 +23,10 @@ const Game = ({
       {games.map((game) => (
         <div className="game-map" key={game.id}>
           <div className="away-team">
-            <h3>{game.away_team}</h3>
+            <div className="away-team-info">
+              {/* <img className="team-logo" src={awayLogo}></img> */}
+              <h3>{game.away_team}</h3>
+            </div>
             <AwaySpread
               game={game}
               handleBet={handleBet}
