@@ -20,6 +20,7 @@ function App() {
     // console.log(res.data)
     setGamesInDb(res.data)
   }
+
   const updateGames = async () => {
     await Client.put(`/games`, gamesInDb)
     console.log('ran updateGames function')
@@ -56,6 +57,7 @@ function App() {
                 user={user}
                 gamesInDb={gamesInDb}
                 setGamesInDb={setGamesInDb}
+                getAllGames={getAllGames}
               />
             }
           />
@@ -81,7 +83,7 @@ function App() {
           />
           <Route
             path="/logout"
-            element={<Logout handleLogOut={handleLogOut} />}
+            element={<Logout setUser={setUser} handleLogOut={handleLogOut} />}
           />
         </Routes>
       </main>

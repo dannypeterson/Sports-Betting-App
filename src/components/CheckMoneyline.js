@@ -11,8 +11,8 @@ const CheckWinner = ({ gamesInDb, user, bet }) => {
     let matchedGame = gamesInDb.find((game) => game.id === bet.Game.id)
 
     if (
-      parseInt(matchedGame.away_team_score) >
-      parseInt(matchedGame.home_team_score)
+      parseInt(matchedGame?.away_team_score) >
+      parseInt(matchedGame?.home_team_score)
     ) {
       winner = matchedGame.away_team
     } else {

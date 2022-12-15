@@ -6,7 +6,7 @@ import Nav from '../components/Nav'
 import Game from '../components/Game'
 import BetSlip from '../components/BetSlip'
 
-const GamesList = ({ user, gamesInDb, setGamesInDb }) => {
+const GamesList = ({ user, gamesInDb, setGamesInDb, getAllGames }) => {
   const API_KEY = process.env.REACT_APP_ODDS_API_KEY
 
   const [games, setGames] = useState([])
@@ -23,7 +23,6 @@ const GamesList = ({ user, gamesInDb, setGamesInDb }) => {
     let res = await axios.get(
       `https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds/?apiKey=${API_KEY}&regions=us&markets=h2h,spreads,totals&oddsFormat=american`
     )
-    // console.log(res.data)
     let gamesArray = []
 
     res.data.forEach((game) => {
@@ -78,7 +77,6 @@ const GamesList = ({ user, gamesInDb, setGamesInDb }) => {
 
       gamesArray.push(gameDetails)
     })
-    // console.log(gamesArray)
     setGames(gamesArray)
   }
 
@@ -129,6 +127,7 @@ const GamesList = ({ user, gamesInDb, setGamesInDb }) => {
         user={user}
         gameId={gameId}
         gamesInDb={gamesInDb}
+        getAllGames={getAllGames}
       />
     </div>
   )

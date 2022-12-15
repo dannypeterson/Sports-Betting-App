@@ -70,6 +70,7 @@ const Home = ({ setUser }) => {
         <br />
 
         <button
+          type="submit"
           className="already-registered-button"
           onClick={() => setLogin(true)}
         >

@@ -12,7 +12,8 @@ const BetSlip = ({
   points,
   user,
   gameId,
-  gamesInDb
+  gamesInDb,
+  getAllGames
 }) => {
   let navigate = useNavigate()
 
@@ -55,12 +56,16 @@ const BetSlip = ({
 
     if (gameExists) {
       let bet = await Client.post(`/bets`, betSlip)
+      // console.log('game exists already')
     } else {
       let game = await Client.post(`/games`, betDetails)
       let bet = await Client.post(`/bets`, betSlip)
+      getAllGames()
+      // console.log('game does not exist, posting game and bet')
     }
 
     user.balance = user.balance - wager
+    // await Client.put(`/users/${user.id}`, user.balance)
     console.log('Bet has been placed')
     console.log(user.balance)
     navigate('/profile')

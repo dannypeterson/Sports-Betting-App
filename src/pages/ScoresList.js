@@ -17,7 +17,6 @@ const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
     let res = await axios.get(
       `https://api.the-odds-api.com/v4/sports/americanfootball_nfl/scores/?apiKey=${API_KEY}&daysFrom=3&dateFormat=unix`
     )
-    console.log(res.data)
     res.data.forEach((game) => {
       let scoreDetails = {}
       let gamesScores = game.scores
