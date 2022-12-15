@@ -60,17 +60,13 @@ const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
               away_team_score: scoreDetails.away_team[0].score,
               home_team_score: scoreDetails.home_team[0].score
             }
-            // console.log(updatedGame)
 
             gamesArray.splice(index, 1, updatedGame)
             setGamesInDb(gamesArray)
-
-            // updateGames()
           }
         })
       }
     })
-    // console.log(scoresArray)
     setScores(scoresArray)
   }
 
