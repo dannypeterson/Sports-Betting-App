@@ -17,7 +17,7 @@ const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
     let res = await axios.get(
       `https://api.the-odds-api.com/v4/sports/americanfootball_nfl/scores/?apiKey=${API_KEY}&daysFrom=3&dateFormat=unix`
     )
-    // console.log(res.data)
+    console.log(res.data)
     res.data.forEach((game) => {
       let scoreDetails = {}
       let gamesScores = game.scores
@@ -79,12 +79,13 @@ const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
   }, [])
 
   return (
-    <div className="scores-container">
+    <div className="scores-list-page">
       {user ? <Nav user={user} /> : null}
-      <div className="scores-header">
-        <h2>Scores</h2>
+      <h2 className="scores-page-title">Past weekend Scores</h2>
+      <div className="scores-container">
+        <div className="scores-header"></div>
+        <Scores scores={scores} />
       </div>
-      <Scores scores={scores} />
     </div>
   )
 }

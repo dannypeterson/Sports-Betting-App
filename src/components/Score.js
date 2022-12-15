@@ -1,6 +1,7 @@
 const Scores = ({ scores }) => {
   return (
-    <div>
+    <div className="scores-grid">
+      <section className="grid-1"></section>
       {scores?.map((score) => (
         <div className="scores-map" key={score.gameId}>
           <h3>
@@ -18,6 +19,7 @@ const Scores = ({ scores }) => {
           </p>
         </div>
       ))}
+      <section className="grid-3"></section>
     </div>
   )
 }

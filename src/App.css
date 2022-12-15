@@ -133,6 +133,7 @@ color: white
   align-items: center;
   height: 120px;
   background-color: #f5f8fc;
+
 }
 
 nav > ul {
@@ -326,13 +327,28 @@ background-color: rgb(223, 238, 253);
 .scores-map {
   display: flex;
   justify-content: space-between;
-  border: 1px solid lightgray;
+  background-color: #1b3152;
+  color: #f5f8fc;
+}
+
+
+.scores-grid {
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  height: 100vh;
 }
 
 .scores-map > p {
   margin-right: 50px;
+  margin-top: 8px;
 }
 
+.scores-page-title {
+  background-color: #f5f8fc;
+  display: flex;
+  justify-content: center;
+  border-top: none;
+}
 
 .live-game {
   color: red;
@@ -345,9 +361,15 @@ background-color: rgb(223, 238, 253);
 .scores-header {
   display: flex;
   justify-content: space-evenly;
+
 }
 
 /* my bets  */
+.profile-page {
+  font-family: 'Nunito Sans', sans-serif;
+  color:rgb(6, 6, 128)
+}
+
 .bet-win-condition {
   color: green
 }
@@ -359,4 +381,30 @@ background-color: rgb(223, 238, 253);
 .bet-status-header {
   display: flex;
   justify-content: space-evenly;
+  cursor: pointer;
+  background-color:#f5f8fc;
+}
+
+.status-selected {
+  color: darkgray;
+}
+
+.profile-header {
+  background-color:#f5f8fc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 5px;
+}
+
+.update-games-button {
+  background-color: inherit;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.update-games-button:hover {
+  background-color: #1b3152;
+  color: white;
 }

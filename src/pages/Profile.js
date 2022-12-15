@@ -18,7 +18,6 @@ const Profile = ({ user, gamesInDb, updateGames }) => {
 
     if (user) {
       let res = await Client.get(`/bets/users/${user.id}`)
-      // console.log(res.data)
       res.data.forEach((game) => {
         if (game.Game.inProgress !== false) {
           activeBetsArray.push(game)
@@ -44,14 +43,43 @@ const Profile = ({ user, gamesInDb, updateGames }) => {
   }, [])
 
   return (
-    <div>
+    <div className="profile-page">
       {user ? <Nav user={user} /> : null}
-      <h2>My Bets</h2>
-      <button onClick={() => updateGames()}>Check Scores</button>
-      <div className="bet-status-header">
-        <h3 onClick={() => toggleStateTrue()}>Active</h3>
-        <h3 onClick={() => toggleStateFalse()}>Settled</h3>
+      <div className="profile-header">
+        <h2>My Bets</h2>
+        <button className="update-games-button" onClick={() => updateGames()}>
+          Check Scores
+        </button>
       </div>
+      {activeState ? (
+        <div className="bet-status-header">
+          <div className="active-bets-tab">
+            <h3 onClick={() => toggleStateTrue()}>Active</h3>
+          </div>
+          <div className="settled-bets-tab">
+            <h3
+              className="status-selected"
+              tabIndex={9}
+              onClick={() => toggleStateFalse()}
+            >
+              Settled
+            </h3>
+          </div>
+        </div>
+      ) : (
+        <div className="bet-status-header">
+          <div className="active-bets-tab">
+            <h3 className="status-selected" onClick={() => toggleStateTrue()}>
+              Active
+            </h3>
+          </div>
+          <div className="settled-bets-tab">
+            <h3 tabIndex={9} onClick={() => toggleStateFalse()}>
+              Settled
+            </h3>
+          </div>
+        </div>
+      )}
 
       {activeState ? (
         <ActiveBet activeBets={activeBets} />

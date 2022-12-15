@@ -63,6 +63,7 @@ const BetSlip = ({
     user.balance = user.balance - wager
     console.log('Bet has been placed')
     console.log(user.balance)
+    navigate('/profile')
   }
 
   return (
