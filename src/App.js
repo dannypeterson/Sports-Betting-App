@@ -9,6 +9,7 @@ import GamesList from './pages/GamesList'
 import Profile from './pages/Profile'
 import ScoresList from './pages/ScoresList'
 import Client from './services/api'
+import Logout from './pages/Logout'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -77,6 +78,10 @@ function App() {
                 updateGames={updateGames}
               />
             }
+          />
+          <Route
+            path="/logout"
+            element={<Logout handleLogOut={handleLogOut} />}
           />
         </Routes>
       </main>

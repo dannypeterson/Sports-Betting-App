@@ -16,6 +16,7 @@ const Nav = ({ user }) => {
           <li onClick={() => navigate('/scores')}>Scores</li>
           <li onClick={() => navigate('/profile')}>@{user?.username}</li>
           <li>${user?.balance}</li>
+          <li onClick={() => navigate('/logout')}>Sign Out</li>
         </ul>
       </nav>
     </header>

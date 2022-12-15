@@ -48,7 +48,7 @@ const Profile = ({ user, gamesInDb, updateGames }) => {
       <div className="profile-header">
         <h2>My Bets</h2>
         <button className="update-games-button" onClick={() => updateGames()}>
-          Check Scores
+          Check Scores &#8634;
         </button>
       </div>
       {activeState ? (
