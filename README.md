@@ -70,6 +70,7 @@ After registering an account, you can browse a databse of future NFL games and t
 
 - [ ] Add logos to teams on GamesList page
 - [ ] Update user balance functionality
+- [ ] Allow users to update or cancel bet
 
 ---
 

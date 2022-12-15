@@ -1,3 +1,5 @@
+import Client from '../services/api'
+
 const ActiveBet = ({ activeBets }) => {
   return (
     <div className="active-bets">
@@ -27,6 +29,12 @@ const ActiveBet = ({ activeBets }) => {
                 {bet.Game?.away_team} @ {bet.Game?.home_team}
               </p>
               <p>{bet.Game?.date}</p>
+            </div>
+            <div
+              onClick={async () => await Client.delete(`/bets/${bet.id}`)}
+              className="delete-bet"
+            >
+              Cancel
             </div>
           </div>
         ))}
