@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 
-import Scores from '../components/Score'
+import Score from '../components/Score'
 import Nav from '../components/Nav'
 import Client from '../services/api'
 
@@ -79,7 +79,7 @@ const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
       <h2 className="scores-page-title">Past weekend Scores</h2>
       <div className="scores-container">
         <div className="scores-header"></div>
-        <Scores scores={scores} />
+        <Score scores={scores} />
       </div>
     </div>
   )

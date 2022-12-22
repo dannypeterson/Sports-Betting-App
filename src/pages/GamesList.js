@@ -97,8 +97,7 @@ const GamesList = ({ user, gamesInDb, setGamesInDb, getAllGames }) => {
     <div className="game-container">
       <Nav user={user} />
       <div className="grid-container">
-        <section className="grid-1"></section>
-        <section className="grid-2">
+        <section>
           <div className="game-columns">
             <h4>NFL</h4>
             <p>Spread</p>
@@ -115,7 +114,6 @@ const GamesList = ({ user, gamesInDb, setGamesInDb, getAllGames }) => {
             setGameId={setGameId}
           />
         </section>
-        <section className="grid-3"></section>
       </div>
       <BetSlip
         betSlipOpen={betSlipOpen}
