@@ -17,7 +17,6 @@ function App() {
 
   const getAllGames = async () => {
     let res = await Client.get(`/games`)
-    // console.log(res.data)
     setGamesInDb(res.data)
   }
 

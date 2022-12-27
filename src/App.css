@@ -123,13 +123,13 @@ color: white
 
 .logo {
   width: auto;
-  height: 3rem;
-  margin: 10px 0px;
+  height: 4rem;
+  margin: 10px 10px;
 }
-.nav-header {
+.navbar {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   height: 120px;
@@ -142,19 +142,47 @@ color: #1b3152;
 font-weight: bold;
 }
 
-.nav_links {
-  list-style: none;
-  display: flex;
+.nav_links ul{
+margin: 0;
+padding: 0;
+display: flex;
+flex-wrap: wrap;
 }
 
-.nav_links li{
+
+.nav_links li {
+  color: #1b3152;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 1rem;
+  display: block;
   cursor: pointer;
   transition: all 0.3s ease 0s;
+  list-style: none;
 }
 
 .nav_links li:hover {
   font-size: larger;
 }
+
+.toggle-button {
+  position: absolute;
+  top: .75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+
+.toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: #1b3152;
+  border-radius: 10px;
+}
+
 
 /* sportsbook page  */
 

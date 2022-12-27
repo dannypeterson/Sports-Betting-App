@@ -1,6 +1,13 @@
+import { useNavigate } from 'react-router-dom'
 import Client from '../services/api'
 
 const ActiveBet = ({ activeBets }) => {
+  let navigate = useNavigate()
+
+  const deleteBet = async (bet) => {
+    await Client.delete(`/bets/${bet.id}`)
+  }
+
   return (
     <div className="active-bets">
       <div className="profile-bets">
@@ -30,10 +37,7 @@ const ActiveBet = ({ activeBets }) => {
               </p>
               <p>{bet.Game?.date}</p>
             </div>
-            <div
-              onClick={async () => await Client.delete(`/bets/${bet.id}`)}
-              className="delete-bet"
-            >
+            <div onClick={() => deleteBet(bet)} className="delete-bet">
               Cancel
             </div>
           </div>

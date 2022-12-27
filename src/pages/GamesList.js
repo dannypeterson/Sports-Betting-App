@@ -38,7 +38,7 @@ const GamesList = ({ user, gamesInDb, setGamesInDb, getAllGames }) => {
       let date = new Date(game.commence_time)
 
       const dateString = date.toLocaleString('en-US', {
-        month: 'long',
+        month: 'short',
         day: 'numeric',
         // year: 'numeric',
         hour: 'numeric',

@@ -48,7 +48,7 @@ const BetSlip = ({
     e.preventDefault()
 
     gamesInDb?.forEach((game) => {
-      console.log(game.id)
+      // console.log(game.id)
       if (game.id == gameId) {
         gameExists = true
       }
@@ -61,13 +61,11 @@ const BetSlip = ({
       let game = await Client.post(`/games`, betDetails)
       let bet = await Client.post(`/bets`, betSlip)
       getAllGames()
-      // console.log('game does not exist, posting game and bet')
     }
 
     user.balance = user.balance - wager
-    // await Client.put(`/users/${user.id}`, user.balance)
-    console.log('Bet has been placed')
-    console.log(user.balance)
+    // console.log('Bet has been placed')
+    // console.log(user.balance)
     navigate('/profile')
   }
 
