@@ -36,8 +36,9 @@ code {
 .register-title > h1{
 color: white
 }
+
 .sign-up-card {
-  width: 420px;
+  width: 30%;
   height: 584px;
   background-color: #ffffff;
   border-radius: 15px;
@@ -48,14 +49,26 @@ color: white
   padding: 20px
 }
 
+@media (max-width: 1050px) {
+  .sign-up-card {
+    width: 60%;
+  }
+
+  .register-container > h3 {
+    text-align: center;
+  }
+
+
+}
+
 .sign-up-card > p {
   font-size: 24px;
   margin-bottom: 15px;
 }
 
 .already-registered-button {
-  height: 44px;
-  width: 344px;
+  height: 3rem;
+  width: 90%;
   background-color:rgb(20, 20, 126);
   color: white;
   cursor: pointer;
@@ -99,9 +112,9 @@ color: white
 }
 
 .terms {
-  font-size: smaller;
+  font-size: 0.7rem;
   color: rgb(122, 122, 122);
-  padding: 0 40px;
+  text-align: center;
 }
 
 .terms > p {
@@ -117,6 +130,10 @@ color: white
   font-size: medium;
   position: fixed;
   bottom: 20%;
+}
+
+.home-title {
+  text-align: center;
 }
 
 /* nav bar  */

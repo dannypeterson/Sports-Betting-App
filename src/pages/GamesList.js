@@ -23,14 +23,18 @@ const GamesList = ({ user, gamesInDb, setGamesInDb, getAllGames }) => {
     let res = await axios.get(
       `https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds/?apiKey=${API_KEY}&regions=us&markets=h2h,spreads,totals&oddsFormat=american`
     )
+    // console.log(
+    //   res.data[0].bookmakers.filter((el) => el.key === 'fanduel')[0].markets[0]
+    //     .outcomes
+    // )
     let gamesArray = []
 
     res.data.forEach((game) => {
       let h2h = game.bookmakers.filter((el) => el.key === 'fanduel')[0]
-        .markets[0].outcomes
+        .markets[0]?.outcomes
 
       let spread = game.bookmakers.filter((el) => el.key === 'fanduel')[0]
-        .markets[1].outcomes
+        .markets[1]?.outcomes
 
       let totals = game.bookmakers.filter((el) => el.key === 'fanduel')[0]
         .markets[2]?.outcomes
