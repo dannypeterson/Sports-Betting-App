@@ -11,11 +11,6 @@ const Nav = ({ user }) => {
         className="logo"
       ></img>
       <div className="nav_links">
-        <a href="#" className="toggle-button">
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </a>
         <ul>
           <li onClick={() => navigate('/games')}>Sportsbook</li>
           <li onClick={() => navigate('/scores')}>Scores</li>
