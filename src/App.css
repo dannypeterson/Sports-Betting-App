@@ -228,7 +228,8 @@ display: flex;
 .away-team-info {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
+  font-size: 1rem;
 }
 
 
@@ -270,6 +271,20 @@ background-color: rgb(223, 238, 253);
 
 .away-spread:focus, .home-spread:focus, .game-moneyline:focus, .game-totals:focus {
   background-color: rgb(223, 238, 253);
+}
+
+@media (max-width: 600px) {
+
+.away-team-info, .home-team-info {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.away-spread, .home-spread, .game-moneyline, .game-totals {
+  height: 50px;
+  width: 75px;
+}
+
 }
 
 /* bet slip  */

@@ -57,7 +57,7 @@ const Game = ({
           </div>
 
           <div className="home-team">
-            <section>
+            <section className="home-team-info">
               <h3>@ {game.home_team}</h3>
               <p>{game.date}</p>
             </section>
