@@ -10,10 +10,12 @@ import Profile from './pages/Profile'
 import ScoresList from './pages/ScoresList'
 import Client from './services/api'
 import Logout from './pages/Logout'
+import SelectLeague from './pages/SelectLeague'
 
 function App() {
   const [user, setUser] = useState(null)
   const [gamesInDb, setGamesInDb] = useState(null)
+  const [league, setLeague] = useState(null)
 
   const getAllGames = async () => {
     let res = await Client.get(`/games`)
@@ -49,6 +51,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Register />} />
           <Route path="/home" element={<Home setUser={setUser} />} />
+          <Route path="/leagues" element={<SelectLeague />} />
           <Route
             path="/games"
             element={

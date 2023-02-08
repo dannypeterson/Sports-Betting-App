@@ -27,7 +27,7 @@ const Home = ({ setUser }) => {
     setUser(payload)
 
     setFormState(initialState)
-    navigate('/games')
+    navigate('/leagues')
   }
 
   return (

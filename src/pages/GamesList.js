@@ -23,10 +23,11 @@ const GamesList = ({ user, gamesInDb, setGamesInDb, getAllGames }) => {
     let res = await axios.get(
       `https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds/?apiKey=${API_KEY}&regions=us&markets=h2h,spreads,totals&oddsFormat=american`
     )
-    // console.log(
-    //   res.data[0].bookmakers.filter((el) => el.key === 'fanduel')[0].markets[0]
-    //     .outcomes
+
+    // let res = await axios.get(
+    //   `https://api.the-odds-api.com/v4/sports/soccer_epl/odds/?apiKey=${API_KEY}&regions=us&markets=h2h,spreads,totals&oddsFormat=american`
     // )
+    // console.log(res)
     let gamesArray = []
 
     res.data.forEach((game) => {
@@ -44,7 +45,6 @@ const GamesList = ({ user, gamesInDb, setGamesInDb, getAllGames }) => {
       const dateString = date.toLocaleString('en-US', {
         month: 'short',
         day: 'numeric',
-        // year: 'numeric',
         hour: 'numeric',
         minute: 'numeric',
         timeZone: 'EST'
@@ -81,6 +81,7 @@ const GamesList = ({ user, gamesInDb, setGamesInDb, getAllGames }) => {
 
       gamesArray.push(gameDetails)
     })
+
     setGames(gamesArray)
   }
 
@@ -91,10 +92,9 @@ const GamesList = ({ user, gamesInDb, setGamesInDb, getAllGames }) => {
   const handleBet = (e, info, type, team, spread) => {
     setBetSlipOpen(true)
     setBetDetails(info)
-    console.log(betDetails)
+    // console.log(betDetails)
     setBetType(type)
     setOdds(e.target.id)
-    // setOdds(parseFloat(e.target.id))
   }
 
   return (
