@@ -15,7 +15,6 @@ import SelectLeague from './pages/SelectLeague'
 function App() {
   const [user, setUser] = useState(null)
   const [gamesInDb, setGamesInDb] = useState(null)
-  const [league, setLeague] = useState(null)
 
   const getAllGames = async () => {
     let res = await Client.get(`/games`)

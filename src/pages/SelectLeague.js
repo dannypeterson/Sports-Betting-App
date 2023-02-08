@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 const SelectLeague = () => {
   const navigate = useNavigate()
@@ -9,6 +10,7 @@ const SelectLeague = () => {
       <button
         id="nfl"
         className="nfl-league"
+        // onClick={setLeague('nfl')}
         // onClick={navigate(`/games/${id}`)}
       >
         NFL
@@ -16,6 +18,7 @@ const SelectLeague = () => {
       <button
         id="epl"
         className="epl-league"
+        // onClick={setLeague('epl')}
         // onClick={navigate(`/games/${id}`)}
       >
         English Premier League
