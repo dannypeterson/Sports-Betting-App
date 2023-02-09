@@ -19,8 +19,6 @@ const GamesList = ({ user, gamesInDb, setGamesInDb, getAllGames }) => {
   const [betType, setBetType] = useState(null)
   const [points, setPoints] = useState(null)
 
-  const [league, setLeague] = useState('nfl')
-
   const getGames = async () => {
     let nflData = await axios.get(
       `https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds/?apiKey=${API_KEY}&regions=us&markets=h2h,spreads,totals&oddsFormat=american`
@@ -85,7 +83,9 @@ const GamesList = ({ user, gamesInDb, setGamesInDb, getAllGames }) => {
       gamesArray.push(gameDetails)
     })
 
-    eplData.data.forEach((game) => {
+    // console.log(eplData)
+
+    await eplData.data.forEach((game) => {
       let h2h = game.bookmakers.filter((el) => el.key === 'bovada')[0]
         .markets[0]?.outcomes
 

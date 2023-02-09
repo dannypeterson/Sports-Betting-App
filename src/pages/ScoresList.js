@@ -14,10 +14,15 @@ const ScoresList = ({ user, gamesInDb, setGamesInDb }) => {
     let scoresArray = []
 
     // external api game scores
-    let res = await axios.get(
+    let nflScores = await axios.get(
       `https://api.the-odds-api.com/v4/sports/americanfootball_nfl/scores/?apiKey=${API_KEY}&daysFrom=3&dateFormat=unix`
     )
-    res.data.forEach((game) => {
+
+    let eplScores = await axios.get(
+      `https://api.the-odds-api.com/v4/sports/soccer_epl/scores/?apiKey=${API_KEY}&daysFrom=3&dateFormat=unix`
+    )
+
+    eplScores.data.forEach((game) => {
       let scoreDetails = {}
       let gamesScores = game.scores
 
