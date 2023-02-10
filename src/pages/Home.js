@@ -27,7 +27,17 @@ const Home = ({ setUser }) => {
     setUser(payload)
 
     setFormState(initialState)
-    navigate('/leagues')
+    navigate('/games')
+  }
+
+  const demoSubmit = async (e) => {
+    e.preventDefault()
+    const payload = await SignInUser({
+      email: 'lamarjackson@gmail.com',
+      password: 'lamar'
+    })
+    await setUser(payload)
+    navigate('/games')
   }
 
   return (
@@ -36,9 +46,10 @@ const Home = ({ setUser }) => {
         <h1>Login to Pigskin Picks</h1>
       </div>
       <img className="logo" src="../../assets/images/logo.png"></img>
-      <form className="login-form" onSubmit={handleSubmit}>
+
+      <form className="login-form" onSubmit={demoSubmit}>
         {/* email label  */}
-        <div className="input-outer-container">
+        {/* <div className="input-outer-container">
           <div className="input-inner-container">
             <span>EMAIL</span>
             <input
@@ -51,10 +62,10 @@ const Home = ({ setUser }) => {
             />
           </div>
         </div>
-        <br />
+        <br /> */}
 
         {/* password label  */}
-        <div className="input-outer-container">
+        {/* <div className="input-outer-container">
           <div className="input-inner-container">
             <span>PASSWORD</span>
             <input
@@ -67,16 +78,17 @@ const Home = ({ setUser }) => {
             />
           </div>
         </div>
-        <br />
+        <br /> */}
 
         <button
           type="submit"
           className="already-registered-button"
           onClick={() => setLogin(true)}
         >
-          Sign In
+          Start Demo
         </button>
       </form>
+
       <button className="back-to-register" onClick={() => navigate('/')}>
         Don't have an account? Register Here.
       </button>
