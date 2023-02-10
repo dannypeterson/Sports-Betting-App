@@ -85,58 +85,58 @@ const GamesList = ({ user, gamesInDb, setGamesInDb, getAllGames }) => {
 
     // console.log(eplData)
 
-    // eplData.data.forEach((game) => {
-    //   let h2h = game.bookmakers.filter((el) => el.key === 'bovada')[0]
-    //     .markets[0]?.outcomes
+    eplData.data.forEach((game) => {
+      let h2h = game.bookmakers.filter((el) => el.key === 'bovada')[0]
+        .markets[0]?.outcomes
 
-    //   let spread = game.bookmakers.filter((el) => el.key === 'bovada')[0]
-    //     .markets[1]?.outcomes
+      let spread = game.bookmakers.filter((el) => el.key === 'bovada')[0]
+        .markets[1]?.outcomes
 
-    //   let totals = game.bookmakers.filter((el) => el.key === 'bovada')[0]
-    //     .markets[2]?.outcomes
+      let totals = game.bookmakers.filter((el) => el.key === 'bovada')[0]
+        .markets[2]?.outcomes
 
-    //   let date = new Date(game.commence_time)
+      let date = new Date(game.commence_time)
 
-    //   const dateString = date.toLocaleString('en-US', {
-    //     month: 'short',
-    //     day: 'numeric',
-    //     hour: 'numeric',
-    //     minute: 'numeric',
-    //     timeZone: 'EST'
-    //   })
+      const dateString = date.toLocaleString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        timeZone: 'EST'
+      })
 
-    //   let gameDetails = {
-    //     league: 'epl',
-    //     home_team: h2h[1].name,
-    //     home_ML: h2h[1].price,
-    //     home_spread: {
-    //       points: spread[1].point,
-    //       price: spread[1].price
-    //     },
-    //     away_team: h2h[0].name,
-    //     away_ML: h2h[0].price,
-    //     away_spread: {
-    //       points: spread[0].point,
-    //       price: spread[0].price
-    //     },
-    //     date: dateString,
-    //     id: game.id,
-    //     inProgress: true
-    //   }
+      let gameDetails = {
+        league: 'epl',
+        home_team: h2h[1].name,
+        home_ML: h2h[1].price,
+        home_spread: {
+          points: spread[1].point,
+          price: spread[1].price
+        },
+        away_team: h2h[0].name,
+        away_ML: h2h[0].price,
+        away_spread: {
+          points: spread[0].point,
+          price: spread[0].price
+        },
+        date: dateString,
+        id: game.id,
+        inProgress: true
+      }
 
-    //   if (totals) {
-    //     gameDetails.over = {
-    //       points: totals[0].point,
-    //       price: totals[0].price
-    //     }
-    //     gameDetails.under = {
-    //       points: totals[1].point,
-    //       price: totals[1].price
-    //     }
-    //   }
+      if (totals) {
+        gameDetails.over = {
+          points: totals[0].point,
+          price: totals[0].price
+        }
+        gameDetails.under = {
+          points: totals[1].point,
+          price: totals[1].price
+        }
+      }
 
-    //   gamesArray.push(gameDetails)
-    // })
+      gamesArray.push(gameDetails)
+    })
 
     setGames(gamesArray)
   }
@@ -158,7 +158,7 @@ const GamesList = ({ user, gamesInDb, setGamesInDb, getAllGames }) => {
       <div className="grid-container">
         <section>
           <div className="game-columns">
-            <h4>NFL</h4>
+            <h4>NFL, English Premier League</h4>
             <p>Spread</p>
             <p>Moneyline</p>
             <p>Total</p>
