@@ -192,6 +192,10 @@ display: flex;
 
 /* sportsbook page  */
 
+.choose-epl, .choose-nfl {
+  cursor: pointer;
+}
+
 .game-container {
   font-family: 'Nunito Sans', sans-serif;
   width: 100%;
