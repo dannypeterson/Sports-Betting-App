@@ -7,7 +7,7 @@ const SettledBet = ({ settledBets, gamesInDb, user }) => {
   return (
     <div className="settled-bets">
       <div className="profile-bets">
-        {settledBets?.map((bet) => (
+        {settledBets?.reverse().map((bet) => (
           <div className="profile-bets-map" key={bet.id}>
             {bet.type === 'moneyline' ? (
               <CheckMoneyline gamesInDb={gamesInDb} user={user} bet={bet} />

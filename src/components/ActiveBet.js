@@ -11,7 +11,7 @@ const ActiveBet = ({ activeBets }) => {
   return (
     <div className="active-bets">
       <div className="profile-bets">
-        {activeBets?.map((bet) => (
+        {activeBets?.reverse().map((bet) => (
           <div className="profile-bets-map" key={bet.id}>
             <div className="profile-bet-details">
               <div className="profile-bet-header">
