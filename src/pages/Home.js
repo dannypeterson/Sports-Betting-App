@@ -47,9 +47,13 @@ const Home = ({ setUser }) => {
       </div>
       <img className="logo" src="../../assets/images/logo.png"></img>
 
-      <form className="login-form" onSubmit={demoSubmit}>
+      <form onSubmit={demoSubmit}>
+        <button className="already-registered-button">Use Demo</button>
+      </form>
+
+      <form className="login-form" onSubmit={handleSubmit}>
         {/* email label  */}
-        {/* <div className="input-outer-container">
+        <div className="input-outer-container">
           <div className="input-inner-container">
             <span>EMAIL</span>
             <input
@@ -62,10 +66,10 @@ const Home = ({ setUser }) => {
             />
           </div>
         </div>
-        <br /> */}
+        <br />
 
         {/* password label  */}
-        {/* <div className="input-outer-container">
+        <div className="input-outer-container">
           <div className="input-inner-container">
             <span>PASSWORD</span>
             <input
@@ -78,14 +82,14 @@ const Home = ({ setUser }) => {
             />
           </div>
         </div>
-        <br /> */}
+        <br />
 
         <button
           type="submit"
           className="already-registered-button"
           onClick={() => setLogin(true)}
         >
-          Start Demo
+          Login
         </button>
       </form>
 
