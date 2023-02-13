@@ -61,11 +61,13 @@ const Game = ({
 
           <div className="home-team">
             <section className="home-team-info">
-              <img
-                className="team-logo"
-                src={`../../assets/EPL-Team-Logos/${game.home_team}.png`}
-              ></img>
-              <h3>{game.home_team}</h3>
+              <div>
+                <img
+                  className="team-logo"
+                  src={`../../assets/EPL-Team-Logos/${game.home_team}.png`}
+                ></img>
+                <h3>{game.home_team}</h3>
+              </div>
               <p>{game.date}</p>
             </section>
             <HomeSpread
