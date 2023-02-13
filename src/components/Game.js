@@ -24,7 +24,10 @@ const Game = ({
         <div className="game-map" key={game.id}>
           <div className="away-team">
             <div className="away-team-info">
-              {/* <img className="team-logo" src={awayLogo}></img> */}
+              <img
+                className="team-logo"
+                src={`../../assets/EPL-Team-Logos/${game.away_team}.png`}
+              ></img>
               <h3>{game.away_team}</h3>
             </div>
             <AwaySpread
@@ -58,7 +61,11 @@ const Game = ({
 
           <div className="home-team">
             <section className="home-team-info">
-              <h3>@ {game.home_team}</h3>
+              <img
+                className="team-logo"
+                src={`../../assets/EPL-Team-Logos/${game.home_team}.png`}
+              ></img>
+              <h3>{game.home_team}</h3>
               <p>{game.date}</p>
             </section>
             <HomeSpread
