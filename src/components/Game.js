@@ -61,7 +61,7 @@ const Game = ({
 
           <div className="home-team">
             <section className="home-team-info">
-              <div className="aaa">
+              <div className="home-logo-name">
                 <img
                   className="team-logo"
                   src={`../../assets/EPL-Team-Logos/${game.home_team}.png`}
