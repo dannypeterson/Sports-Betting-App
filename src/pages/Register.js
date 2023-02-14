@@ -48,7 +48,7 @@ const Register = () => {
           className="already-registered-button"
           onClick={() => navigate('/home')}
         >
-          <p>Login here</p>
+          <p>Login / Use Demo</p>
         </div>
         <form className="register-form" onSubmit={handleSubmit}>
           {/* email label  */}
