@@ -44,6 +44,7 @@ const BetSlip = ({
     wager: wager,
     to_win: payout
   }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -68,6 +69,8 @@ const BetSlip = ({
     // console.log(user.balance)
     navigate('/profile')
   }
+
+  // useEffect(() => {}, wager)
 
   return (
     <div className="betslip">
@@ -101,7 +104,7 @@ const BetSlip = ({
                     <span>$</span>
                     <input
                       className="wager-input"
-                      type="text"
+                      type="number"
                       onChange={handleWager}
                     />
                   </div>
